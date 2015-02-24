@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="fontColor" type="color">#232423</item>
+    <item name="buttonTextColor" type="color">#543F8C</item>
+    <item name="backgroundColor" type="color">#4D4C4A</item>
+    <item name="editTextColor" type="color">#806DB3</item>
+
+</resources>

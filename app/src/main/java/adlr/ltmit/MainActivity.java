@@ -20,13 +20,13 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.register);
 
-        CategoryDao dao = new CategoryDao();
-
-        Category c2 = dao.select(1);
-        tv = (TextView) findViewById(R.id.hello);
-        tv.setText(c2.name);
+//        CategoryDao dao = new CategoryDao();
+//
+//        Category c2 = dao.select(1);
+//        tv = (TextView) findViewById(R.id.hello);
+//        tv.setText(c2.name);
 //
 
     }

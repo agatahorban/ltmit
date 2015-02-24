@@ -4,5 +4,13 @@
     <string name="app_name">LTM.it</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="name">Name: </string>
+    <string name="password">Password: </string>
+    <string name="email">E-mail: </string>
+    <string name="doYou">I want to learn my words by e-mail</string>
+    <string name="ok">OK</string>
+    <string name="cancel">CANCEL</string>
+    <string name="title_activity_organization">OrganizationActivity</string>
 
 </resources>

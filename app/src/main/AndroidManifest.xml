@@ -3,12 +3,11 @@
     package="adlr.ltmit" >
 
     <application
-
+        android:name="com.activeandroid.app.Application"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:name="com.activeandroid.app.Application">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -19,8 +18,18 @@
             </intent-filter>
         </activity>
 
-        <meta-data android:name="AA_DB_NAME" android:value="ltm.db" />
-        <meta-data android:name="AA_DB_VERSION" android:value="4" />
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="ltm.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="4" />
+
+        <activity
+            android:name=".activities.OrganizationActivity"
+            android:label="@string/title_activity_organization"
+            android:theme="@style/AppTheme2">
+        </activity>
     </application>
 
 </manifest>

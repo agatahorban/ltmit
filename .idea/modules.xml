@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LTM.it.iml" filepath="$PROJECT_DIR$/LTM.it.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ltmit.iml" filepath="$PROJECT_DIR$/ltmit.iml" />
     </modules>
   </component>
 </project>
