@@ -65,8 +65,9 @@ public class RegistrationActivity extends ActionBarActivity {
     public void registerMe(View view){
         rc.saveData(nameET.getText().toString(), emailET.getText().toString(), emailCheckBox.isChecked(),sp);
 
-        Intent intent = new Intent(this, CheckingActivity.class);
+        Intent intent = new Intent(this, OrganizationActivity.class);
         startActivity(intent);
+        this.finish();
     }
 
     public void cancelMe(View view){

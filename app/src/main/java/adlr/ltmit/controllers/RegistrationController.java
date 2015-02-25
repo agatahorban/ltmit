@@ -13,12 +13,14 @@ public class RegistrationController {
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("name",sname);
         editor.putBoolean("learning",slearning);
+
         if(slearning= true)
             editor.putString("email",semail);
         else
             editor.putString("",semail);
-        editor.commit();
 
+        editor.putBoolean("isRegistered",true);
+        editor.commit();
 
     }
 }
