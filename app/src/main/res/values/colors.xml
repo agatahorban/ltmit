@@ -5,5 +5,9 @@
     <item name="buttonTextColor" type="color">#543F8C</item>
     <item name="backgroundColor" type="color">#4D4C4A</item>
     <item name="editTextColor" type="color">#806DB3</item>
+    <item name="whiteColor" type="color">#FFFFFF</item>
+    <item name="listColor" type="color">#6A6282</item>
 
+    <drawable name="focused">#70658C</drawable>
+    <drawable name="selected">#70658C</drawable>
 </resources>

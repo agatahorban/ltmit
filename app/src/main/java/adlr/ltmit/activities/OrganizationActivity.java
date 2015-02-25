@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import adlr.ltmit.R;
 import adlr.ltmit.fragments.DatabasesFragment;
+import adlr.ltmit.fragments.DatabasesListFragment;
 import adlr.ltmit.fragments.ProfileFragment;
 
 public class OrganizationActivity extends ActionBarActivity implements ActionBar.TabListener {
@@ -111,7 +112,7 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
         public Fragment getItem(int position) {
             Fragment fragment;
             if(position == 0){
-                fragment = new DatabasesFragment();
+                fragment = new DatabasesListFragment();
             }else {
                fragment = new ProfileFragment();
             }

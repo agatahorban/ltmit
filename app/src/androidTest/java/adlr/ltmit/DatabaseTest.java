@@ -45,5 +45,8 @@ public class DatabaseTest extends TestCase {
         Database db2 = dd.getDatabaseWithSomeName("db1");
         assertNotNull(db2);
 
+        d = new Delete().from(Database.class).execute();
+        l = new Delete().from(Category.class).execute();
+
     }
 }
