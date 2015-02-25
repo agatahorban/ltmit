@@ -16,7 +16,7 @@ public class DatabaseDao extends CrudDao<Database>  {
     public static Database getDatabaseWithSomeName(String name) {
         return new Select()
                 .from(Database.class)
-                .where("NAME = ?",name)
+                .where("DATABASE_NAME = ?",name)
                 .executeSingle();
     }
 }

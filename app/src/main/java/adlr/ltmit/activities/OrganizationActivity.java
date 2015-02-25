@@ -1,6 +1,10 @@
 package adlr.ltmit.activities;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,15 +12,39 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import adlr.ltmit.R;
+import adlr.ltmit.fragments.DatabasesFragment;
+import adlr.ltmit.fragments.ProfileFragment;
 
 public class OrganizationActivity extends ActionBarActivity implements ActionBar.TabListener {
 
     ActionBar actionBar;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_organization);
+        setContentView(R.layout.organization_acitivity);
+
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        OrganizationAdapter adapter = new OrganizationAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                actionBar.setSelectedNavigationItem(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
         actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
@@ -30,6 +58,8 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
 //
         actionBar.addTab(tab1);
         actionBar.addTab(tab2);
+
+
 
     }
 
@@ -58,7 +88,7 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
+        viewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
@@ -69,5 +99,28 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 
+    }
+
+    class OrganizationAdapter extends FragmentPagerAdapter{
+
+        public OrganizationAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            Fragment fragment;
+            if(position == 0){
+                fragment = new DatabasesFragment();
+            }else {
+               fragment = new ProfileFragment();
+            }
+            return fragment;
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
     }
 }

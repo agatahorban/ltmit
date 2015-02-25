@@ -1,5 +1,6 @@
 package adlr.ltmit.bl;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -12,19 +13,36 @@ public class Calculator {
     public static long HIGH_PERCENTAGE = 80;
     public static long MEDIUM_PERCENTAGE = 50;
 
-    public static long MEDIUM_COEFFICIENT = 2;
-    public static long LOW_COEFFICIENT = 3;
+    public static long MEDIUM_COEFFICIENT = 3;
+    public static long HIGH_COEFFICIENT = 5;
 
-    public static Date calculateDate(int priority, double percentage){
-        Long today = System.currentTimeMillis();
+    public static Date calculateDate(Long today, int priority, double percentage){
         if(percentage >= HIGH_PERCENTAGE){
-            return new Date(today + priority * DAY);
+            return new Date(today + HIGH_COEFFICIENT * priority * DAY);
         }
         else if(percentage > MEDIUM_PERCENTAGE && percentage < HIGH_PERCENTAGE){
-            return new Date(MEDIUM_COEFFICIENT * priority * DAY);
+            return new Date(today + MEDIUM_COEFFICIENT * priority * DAY);
         }
         else {
-            return new Date(LOW_COEFFICIENT * priority * DAY);
+            return new Date(today +  priority * DAY);
         }
+    }
+
+    public static int getDay(Date date){
+        return setCalendar(date).get(Calendar.DAY_OF_MONTH) + 1;
+    }
+
+    public static int getMonth(Date date){
+        return setCalendar(date).get(Calendar.MONTH) + 1 ;
+    }
+
+    public static int getYear(Date date){
+        return setCalendar(date).get(Calendar.YEAR);
+    }
+
+    private static Calendar setCalendar(Date date){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar;
     }
 }

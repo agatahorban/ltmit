@@ -12,5 +12,7 @@
     <string name="ok">OK</string>
     <string name="cancel">CANCEL</string>
     <string name="title_activity_organization">OrganizationActivity</string>
+    <string name="create_database">CREATE NEW</string>
+    <string name="title_activity_checking">CheckingActivity</string>
 
 </resources>
