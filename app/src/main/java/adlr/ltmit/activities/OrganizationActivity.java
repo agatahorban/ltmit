@@ -10,16 +10,20 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import adlr.ltmit.R;
-import adlr.ltmit.fragments.DatabasesFragment;
+
+import adlr.ltmit.fragments.AddingFragment;
 import adlr.ltmit.fragments.DatabasesListFragment;
 import adlr.ltmit.fragments.ProfileFragment;
 
 public class OrganizationActivity extends ActionBarActivity implements ActionBar.TabListener {
 
-    ActionBar actionBar;
-    ViewPager viewPager;
+    private ActionBar actionBar;
+    private ViewPager viewPager;
+
+    private Fragment myFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +60,14 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
         ActionBar.Tab tab2 = actionBar.newTab();
         tab2.setText("YOUR PROFILE");
         tab2.setTabListener(this);
-//
+
+        ActionBar.Tab tab3 = actionBar.newTab();
+        tab3.setText("CREATE NEW...");
+        tab3.setTabListener(this);
+
         actionBar.addTab(tab1);
         actionBar.addTab(tab2);
-
+        actionBar.addTab(tab3);
 
 
     }
@@ -112,16 +120,23 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
         public Fragment getItem(int position) {
             Fragment fragment;
             if(position == 0){
-                fragment = new DatabasesListFragment();
-            }else {
-               fragment = new ProfileFragment();
+                myFragment = new DatabasesListFragment();
+            }else if(position == 1) {
+               myFragment = new ProfileFragment();
+            } else {
+                myFragment = new AddingFragment();
             }
-            return fragment;
+            return myFragment;
         }
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
+    }
+
+    public void addNewCategory(View view){
+        AddingFragment af = (AddingFragment) myFragment;
+        af.addNewCategory(view);
     }
 }

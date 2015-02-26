@@ -1,5 +1,7 @@
 package adlr.ltmit.controllers;
 
+import android.util.Log;
+
 import com.activeandroid.query.Delete;
 
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ public class CategoriesController {
 
     public CategoriesController(){
 //        List<Category> l = new Delete().from(Category.class).execute();
-//        createExamples();;
+//       createExamples();
         cd = new CategoryDao();
 
     }
@@ -40,5 +42,10 @@ public class CategoriesController {
             list.add(c.getName());
         }
        return list.toArray(new String[list.size()]);
+    }
+
+    public void addNewCategory(String name){
+        Category cat = new Category(name);
+        cat.save();
     }
 }

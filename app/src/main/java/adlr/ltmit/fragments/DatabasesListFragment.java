@@ -3,6 +3,7 @@ package adlr.ltmit.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,7 @@ public class DatabasesListFragment extends ListFragment
 {
     CategoriesController cc;
     String[] stringArray;
-
+    LayoutInflater inf;
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
@@ -37,6 +38,7 @@ public class DatabasesListFragment extends ListFragment
                 inflater.getContext(),   R.layout.row_layout, R.id.label,
                 stringArray);
         setListAdapter(adapter);
+        inf = inflater;
         return v;
     }
 
@@ -45,5 +47,6 @@ public class DatabasesListFragment extends ListFragment
         super.onActivityCreated(savedInstanceState);
         getListView().setSelector(R.drawable.lselector);
     }
+
 
 }

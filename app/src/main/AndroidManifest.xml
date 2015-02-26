@@ -38,6 +38,14 @@
             android:name=".activities.CheckingActivity"
             android:label="@string/title_activity_checking" >
         </activity>
+        <activity
+            android:name=".activities.AddingActivity"
+            android:label="@string/title_activity_adding" >
+        </activity>
+        <activity
+            android:name=".activities.CreateNewCategoryActivity"
+            android:label="@string/title_activity_create_new_category" >
+        </activity>
     </application>
 
 </manifest>

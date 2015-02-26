@@ -14,5 +14,10 @@
     <string name="title_activity_organization">OrganizationActivity</string>
     <string name="create_database">CREATE NEW</string>
     <string name="title_activity_checking">CheckingActivity</string>
+    <string name="title_activity_adding">ltm.it create new...</string>
+    <string name="category">CATEGORY</string>
+    <string name="database">DATABASE</string>
+    <string name="title_activity_create_new_category">CreateNewCategoryActivity</string>
+    <string name="name_of_new_category">Name of the new category</string>
 
 </resources>
