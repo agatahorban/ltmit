@@ -1,5 +1,7 @@
 package adlr.ltmit.activities;
 
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -8,12 +10,17 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import adlr.ltmit.R;
 
+import adlr.ltmit.controllers.CategoriesController;
 import adlr.ltmit.fragments.AddingFragment;
 import adlr.ltmit.fragments.DatabasesListFragment;
 import adlr.ltmit.fragments.ProfileFragment;
@@ -24,6 +31,13 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
     private ViewPager viewPager;
 
     private Fragment myFragment;
+
+    private CategoriesController cc;
+
+    private EditText categoryNameET2;
+    private TextView categoryNameTv2;
+    private Button buttonCategoryOk2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +83,11 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
         actionBar.addTab(tab2);
         actionBar.addTab(tab3);
 
+        cc = new CategoriesController();
+
 
     }
+
 
 
     @Override
@@ -136,7 +153,40 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
     }
 
     public void addNewCategory(View view){
-        AddingFragment af = (AddingFragment) myFragment;
-        af.addNewCategory(view);
+        if(getScreenOrientation()== Configuration.ORIENTATION_PORTRAIT){
+        Intent intent = new Intent(this, CreateNewCategoryActivity.class);
+        startActivity(intent);}
+        else {
+            categoryNameET2 = (EditText) findViewById(R.id.categoryNameET2);
+            categoryNameTv2 = (TextView) findViewById(R.id.categoryNameTv2);
+            buttonCategoryOk2 = (Button) findViewById(R.id.buttonCategoryOk2);
+            categoryNameET2.setVisibility(View.VISIBLE);
+            categoryNameTv2.setVisibility(View.VISIBLE);
+            buttonCategoryOk2.setVisibility(View.VISIBLE);
+
+        }
+    }
+
+    public void saveMe2(View view){
+
+        categoryNameET2 = (EditText) findViewById(R.id.categoryNameET2);
+        cc.addNewCategory(categoryNameET2.getText().toString());
+    }
+
+
+    public int getScreenOrientation()
+    {
+        Display getOrient = getWindowManager().getDefaultDisplay();
+        int orientation = Configuration.ORIENTATION_UNDEFINED;
+        if(getOrient.getWidth()==getOrient.getHeight()){
+            orientation = Configuration.ORIENTATION_SQUARE;
+        } else{
+            if(getOrient.getWidth() < getOrient.getHeight()){
+                orientation = Configuration.ORIENTATION_PORTRAIT;
+            }else {
+                orientation = Configuration.ORIENTATION_LANDSCAPE;
+            }
+        }
+        return orientation;
     }
 }

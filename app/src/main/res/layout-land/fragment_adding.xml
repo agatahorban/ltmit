@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    tools:context="adlr.ltmit.activities.AddingActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:layout_width="120dp"
+            android:textSize="14dp"
+            android:layout_height="wrap_content"
+            android:text="@string/category"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="25dp"
+            android:id="@+id/categoryCreatingButton"
+            android:background="@drawable/button_layout"
+            android:textColor="@color/buttonTextColor"
+            android:onClick="addNewCategory"
+            />
+
+        <Button
+            android:layout_width="120dp"
+            android:textSize="14dp"
+            android:layout_height="wrap_content"
+            android:text="@string/database"
+            android:id="@+id/databaseCreatingButton"
+            android:background="@drawable/button_layout"
+            android:textColor="@color/buttonTextColor"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="15dp"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+       >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="50dp">
+            <TextView
+                android:id="@+id/categoryNameTv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:padding="10dp"
+                android:text="@string/name_of_new_category" />
+
+            <EditText
+                android:id="@+id/categoryNameET2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edit_text_layout"
+                android:inputType="textVisiblePassword"
+                android:padding="5dip" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="right|bottom">
+
+            <Button
+                android:id="@+id/buttonCategoryOk2"
+                android:layout_width="86dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/button_layout"
+                android:text="@string/ok"
+                android:textColor="@color/buttonTextColor"
+                android:onClick="saveMe2"
+
+                />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
