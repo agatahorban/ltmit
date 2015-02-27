@@ -46,6 +46,10 @@
             android:name=".activities.CreateNewCategoryActivity"
             android:label="@string/title_activity_create_new_category" >
         </activity>
+        <activity
+            android:name=".activities.CreateNewDatabaseActivity"
+            android:label="@string/title_activity_create_new_database" >
+        </activity>
     </application>
 
 </manifest>

@@ -196,6 +196,8 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
 
     public void addNewDatabase(View view){
         if(getScreenOrientation()== Configuration.ORIENTATION_PORTRAIT){
+            Intent intent = new Intent(this, CreateNewDatabaseActivity.class);
+            startActivity(intent);
         }
         else {
             categoryNameET2 = (EditText) findViewById(R.id.categoryNameET2);

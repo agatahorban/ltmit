@@ -68,8 +68,6 @@
             android:text="@string/cancel"
             android:textColor="@color/buttonTextColor"
             android:onClick="cancelMe"/>
-
-
     </LinearLayout>
 
 

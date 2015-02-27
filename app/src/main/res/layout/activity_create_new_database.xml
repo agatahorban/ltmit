@@ -1,0 +1,134 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    android:orientation="vertical"
+    tools:context="adlr.ltmit.activities.CreateNewDatabaseActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/databaseNamePortraitTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:padding="10dp"
+            android:text="@string/name_of_new_database" />
+
+        <EditText
+            android:id="@+id/databaseNamePortraitET"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/edit_text_layout"
+            android:inputType="textVisiblePassword"
+            android:padding="5dip" />
+
+
+        <TextView
+            android:id="@+id/priorityTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:padding="5dp"
+            android:text="@string/priority" />
+
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HIGH"
+                android:id="@+id/radioButton4"
+                android:button="@drawable/radiobutton_layout"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MEDIUM"
+                android:id="@+id/radioButton5"
+                android:button="@drawable/radiobutton_layout"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOW"
+                android:id="@+id/radioButton6"
+                android:button="@drawable/radiobutton_layout"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/categoryDbNameTv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:padding="5dp"
+            android:text="@string/name_of_the_category" />
+
+        <EditText
+            android:id="@+id/categoryDbNameET"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/edit_text_layout"
+            android:inputType="textVisiblePassword"
+            android:padding="5dip" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_gravity="end">
+
+        <Button
+            android:id="@+id/buttonDatabasePortraitOk"
+            android:layout_width="86dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/button_layout"
+            android:text="@string/ok"
+            android:textColor="@color/buttonTextColor"
+            android:onClick="saveMe"
+            />
+
+        <Button
+            android:id="@+id/buttonDatabasePortraitCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/button_layout"
+            android:text="@string/cancel"
+            android:textColor="@color/buttonTextColor"
+            android:onClick="cancelMe"/>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

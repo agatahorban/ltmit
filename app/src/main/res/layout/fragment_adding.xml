@@ -41,7 +41,8 @@ tools:context="adlr.ltmit.activities.AddingActivity">
         android:background="@drawable/button_layout"
         android:textColor="@color/buttonTextColor"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="15dp"/>
+        android:layout_marginBottom="15dp"
+        android:onClick="addNewDatabase"/>
     </LinearLayout>
 
 
