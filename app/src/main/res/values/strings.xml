@@ -18,6 +18,12 @@
     <string name="category">CATEGORY</string>
     <string name="database">DATABASE</string>
     <string name="title_activity_create_new_category">CreateNewCategoryActivity</string>
+
     <string name="name_of_new_category">Name of the new category</string>
+
+    <string name="name_of_new_database">Name of the new database</string>
+    <string name="priority">Priority</string>
+    <string name="name_of_the_category">Name of the category</string>
+
 
 </resources>

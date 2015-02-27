@@ -7,8 +7,6 @@
     android:background="@color/backgroundColor"
     tools:context="adlr.ltmit.activities.AddingActivity">
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +36,8 @@
             android:background="@drawable/button_layout"
             android:textColor="@color/buttonTextColor"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="15dp"
+            android:onClick="addNewDatabase"/>
     </LinearLayout>
 
 
@@ -55,23 +54,80 @@
             android:orientation="vertical"
             android:layout_marginBottom="50dp">
             <TextView
-                android:id="@+id/categoryNameTv2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:padding="10dp"
-                android:text="@string/name_of_new_category" />
+            android:id="@+id/categoryNameTv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:padding="5dp"
+            android:text="@string/name_of_new_category" />
 
             <EditText
                 android:id="@+id/categoryNameET2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/edit_text_layout"
                 android:inputType="textVisiblePassword"
                 android:padding="5dip" />
+
+            <TextView
+                android:id="@+id/priorityTv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:padding="5dp"
+                android:text="@string/priority" />
+
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HIGH"
+                    android:id="@+id/radioButton"
+                    android:button="@drawable/radiobutton_layout"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MEDIUM"
+                    android:id="@+id/radioButton2"
+                    android:button="@drawable/radiobutton_layout"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LOW"
+                    android:id="@+id/radioButton3"
+                    android:button="@drawable/radiobutton_layout"/>
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/categoryDbNameTv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:padding="5dp"
+                    android:text="@string/name_of_the_category" />
+
+                <EditText
+                    android:id="@+id/categoryDbNameET2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/edit_text_layout"
+                    android:inputType="textVisiblePassword"
+                    android:padding="5dip" />
+
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

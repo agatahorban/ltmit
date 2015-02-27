@@ -10,17 +10,23 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import adlr.ltmit.R;
 
+import adlr.ltmit.bl.Priority;
 import adlr.ltmit.controllers.CategoriesController;
+import adlr.ltmit.controllers.DatabasesController;
+import adlr.ltmit.dao.DatabaseDao;
+import adlr.ltmit.entities.Database;
 import adlr.ltmit.fragments.AddingFragment;
 import adlr.ltmit.fragments.DatabasesListFragment;
 import adlr.ltmit.fragments.ProfileFragment;
@@ -33,11 +39,15 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
     private Fragment myFragment;
 
     private CategoriesController cc;
+    private DatabasesController dc;
 
     private EditText categoryNameET2;
     private TextView categoryNameTv2;
     private Button buttonCategoryOk2;
 
+    private TextView priorityTv2, categoryDbNameTv2;
+    private RadioButton radioButton1, radioButton2, radioButton3;
+    private EditText categoryDbNameET2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +94,7 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
         actionBar.addTab(tab3);
 
         cc = new CategoriesController();
-
+        dc = new DatabasesController();
 
     }
 
@@ -159,7 +169,24 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
         else {
             categoryNameET2 = (EditText) findViewById(R.id.categoryNameET2);
             categoryNameTv2 = (TextView) findViewById(R.id.categoryNameTv2);
+            categoryNameTv2.setText(getString(R.string.name_of_new_category));
             buttonCategoryOk2 = (Button) findViewById(R.id.buttonCategoryOk2);
+
+            priorityTv2 = (TextView) findViewById(R.id.priorityTv2);
+            categoryDbNameTv2 = (TextView) findViewById(R.id.categoryDbNameTv2);
+            categoryDbNameET2 = (EditText) findViewById(R.id.categoryDbNameET2);
+            radioButton1 = (RadioButton) findViewById(R.id.radioButton);
+            radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
+            radioButton3 = (RadioButton) findViewById(R.id.radioButton3);
+
+            if(priorityTv2.getVisibility() == View.VISIBLE){
+                priorityTv2.setVisibility(View.GONE);
+                categoryDbNameTv2.setVisibility(View.GONE);
+                categoryDbNameET2.setVisibility(View.GONE);
+                radioButton1.setVisibility(View.GONE);
+                radioButton2.setVisibility(View.GONE);
+                radioButton3.setVisibility(View.GONE);
+            }
             categoryNameET2.setVisibility(View.VISIBLE);
             categoryNameTv2.setVisibility(View.VISIBLE);
             buttonCategoryOk2.setVisibility(View.VISIBLE);
@@ -167,10 +194,53 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
         }
     }
 
-    public void saveMe2(View view){
+    public void addNewDatabase(View view){
+        if(getScreenOrientation()== Configuration.ORIENTATION_PORTRAIT){
+        }
+        else {
+            categoryNameET2 = (EditText) findViewById(R.id.categoryNameET2);
+            categoryNameTv2 = (TextView) findViewById(R.id.categoryNameTv2);
+            categoryNameTv2.setText(getString(R.string.name_of_new_database));
+            buttonCategoryOk2 = (Button) findViewById(R.id.buttonCategoryOk2);
 
+            priorityTv2 = (TextView) findViewById(R.id.priorityTv2);
+            categoryDbNameTv2 = (TextView) findViewById(R.id.categoryDbNameTv2);
+            categoryDbNameET2 = (EditText) findViewById(R.id.categoryDbNameET2);
+            radioButton1 = (RadioButton) findViewById(R.id.radioButton);
+            radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
+            radioButton3 = (RadioButton) findViewById(R.id.radioButton3);
+
+            categoryNameET2.setVisibility(View.VISIBLE);
+            categoryNameTv2.setVisibility(View.VISIBLE);
+            buttonCategoryOk2.setVisibility(View.VISIBLE);
+
+            priorityTv2.setVisibility(View.VISIBLE);
+            categoryDbNameTv2.setVisibility(View.VISIBLE);
+            categoryDbNameET2.setVisibility(View.VISIBLE);
+            radioButton1.setVisibility(View.VISIBLE);
+            radioButton2.setVisibility(View.VISIBLE);
+            radioButton3.setVisibility(View.VISIBLE);
+
+        }
+    }
+
+    public void saveMe2(View view){
+        priorityTv2 = (TextView) findViewById(R.id.priorityTv2);
         categoryNameET2 = (EditText) findViewById(R.id.categoryNameET2);
-        cc.addNewCategory(categoryNameET2.getText().toString());
+
+            if(priorityTv2.getVisibility()==View.GONE)
+                cc.addNewCategory(categoryNameET2.getText().toString());
+            else{
+                int prio = 0;
+                if(radioButton1.isChecked()) prio = Priority.HIGH.getValue();
+                else if (radioButton2.isChecked()) prio = Priority.MEDIUM.getValue();
+                else prio = Priority.LOW.getValue();
+                dc.addNewDatabase(categoryNameET2.getText().toString(),categoryDbNameET2.getText().toString(), prio);
+                DatabaseDao dd = new DatabaseDao();
+                for(Database db : dd.selectAll()){
+                    Log.d("DATABASE_LOG", db.getName() + " "+ db.getPriority() + " " + db.getCategory());
+                }
+            }
     }
 
 
