@@ -17,7 +17,7 @@ public class RegistrationController {
         if(slearning= true)
             editor.putString("email",semail);
         else
-            editor.putString("",semail);
+            editor.putString("email","");
 
         editor.putBoolean("isRegistered",true);
         editor.commit();

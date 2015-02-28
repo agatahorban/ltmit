@@ -23,5 +23,8 @@
     <string name="priority">Priority</string>
     <string name="name_of_the_category">Name of the category</string>
     <string name="title_activity_create_new_database">CreateNewDatabaseActivity</string>
+    <string name="title_activity_database_list">DatabaseListActivity</string>
 
+    <string name="settings">SETTINGS</string>
+    <string name="general_statistics">GENERAL STATISTICS</string>
 </resources>

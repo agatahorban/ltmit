@@ -50,6 +50,10 @@
             android:name=".activities.CreateNewDatabaseActivity"
             android:label="@string/title_activity_create_new_database" >
         </activity>
+        <activity
+            android:name=".activities.DatabaseListActivity"
+            android:label="@string/title_activity_database_list" >
+        </activity>
     </application>
 
 </manifest>

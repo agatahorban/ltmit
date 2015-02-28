@@ -68,6 +68,7 @@ public class CreateNewDatabaseActivity extends ActionBarActivity {
         for(Database db : dd.selectAll()){
             Log.d("DATABASE_LOG", db.getName() + " " + db.getPriority() + " " + db.getCategory());
         }
+        this.finish();
     }
 
     public void cancelMe(View view){

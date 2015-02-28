@@ -7,7 +7,8 @@
     <item name="editTextColor" type="color">#806DB3</item>
     <item name="whiteColor" type="color">#FFFFFF</item>
     <item name="listColor" type="color">#6A6282</item>
-
+    <item name="helloColor" type="color">#825FDE</item>
+    <item name="settingsColorFirst" type="color">#735BB3</item>
     <drawable name="focused">#70658C</drawable>
-    <drawable name="selected">#70658C</drawable>
+    <drawable name="selected">#8A74C4</drawable>
 </resources>

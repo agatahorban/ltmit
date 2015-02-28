@@ -53,15 +53,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginBottom="50dp">
-            <TextView
-            android:id="@+id/categoryNameTv2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="18dp"
-            android:padding="5dp"
-            android:text="@string/name_of_new_category" />
 
             <EditText
+                android:layout_marginTop="20dp"
                 android:id="@+id/categoryNameET2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -70,7 +64,8 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/edit_text_layout"
                 android:inputType="textVisiblePassword"
-                android:padding="5dip" />
+                android:padding="5dip"
+                android:hint="@string/name_of_new_category"/>
 
             <TextView
                 android:id="@+id/priorityTv2"
@@ -78,7 +73,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
                 android:padding="5dp"
-                android:text="@string/priority" />
+                android:text="@string/priority"
+                />
 
 
             <RadioGroup
@@ -108,24 +104,18 @@
                     android:button="@drawable/radiobutton_layout"/>
                 </RadioGroup>
 
-                <TextView
-                    android:id="@+id/categoryDbNameTv2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="18dp"
-                    android:padding="5dp"
-                    android:text="@string/name_of_the_category" />
-
                 <EditText
                     android:id="@+id/categoryDbNameET2"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/edit_text_layout"
                     android:inputType="textVisiblePassword"
-                    android:padding="5dip" />
+                    android:padding="5dip"
+                    android:hint="@string/name_of_the_category"/>
 
 
         </LinearLayout>

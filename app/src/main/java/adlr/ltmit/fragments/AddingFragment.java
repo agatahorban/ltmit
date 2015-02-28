@@ -22,10 +22,10 @@ import adlr.ltmit.activities.CreateNewCategoryActivity;
 public class AddingFragment extends Fragment {
 
     private EditText categoryNameET2;
-    private TextView categoryNameTv2;
+//    private TextView categoryNameTv2;
     private Button buttonCategoryOk2;
 
-    private TextView priorityTv2, categoryDbNameTv2;
+    private TextView priorityTv2;
     private RadioButton radioButton1, radioButton2, radioButton3;
     private EditText categoryDbNameET2;
 
@@ -45,22 +45,22 @@ public class AddingFragment extends Fragment {
         super.onResume();
         if(getScreenOrientation()== Configuration.ORIENTATION_LANDSCAPE) {
             categoryNameET2 = (EditText) getActivity().findViewById(R.id.categoryNameET2);
-            categoryNameTv2 = (TextView) getActivity().findViewById(R.id.categoryNameTv2);
+//            categoryNameTv2 = (TextView) getActivity().findViewById(R.id.categoryNameTv2);
             buttonCategoryOk2 = (Button) getActivity().findViewById(R.id.buttonCategoryOk2);
 
             priorityTv2 = (TextView) getActivity().findViewById(R.id.priorityTv2);
-            categoryDbNameTv2 = (TextView) getActivity().findViewById(R.id.categoryDbNameTv2);
+//            categoryDbNameTv2 = (TextView) getActivity().findViewById(R.id.categoryDbNameTv2);
             categoryDbNameET2 = (EditText) getActivity().findViewById(R.id.categoryDbNameET2);
             radioButton1 = (RadioButton) getActivity().findViewById(R.id.radioButton);
             radioButton2 = (RadioButton) getActivity().findViewById(R.id.radioButton2);
             radioButton3 = (RadioButton) getActivity().findViewById(R.id.radioButton3);
 
-            categoryNameET2.setVisibility(View.GONE);
-            categoryNameTv2.setVisibility(View.GONE);
+           categoryNameET2.setVisibility(View.GONE);
+//            categoryNameTv2.setVisibility(View.GONE);
             buttonCategoryOk2.setVisibility(View.GONE);
 
             priorityTv2.setVisibility(View.GONE);
-            categoryDbNameTv2.setVisibility(View.GONE);
+//            categoryDbNameTv2.setVisibility(View.GONE);
             categoryDbNameET2.setVisibility(View.GONE);
             radioButton1.setVisibility(View.GONE);
             radioButton2.setVisibility(View.GONE);

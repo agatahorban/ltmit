@@ -33,6 +33,9 @@ public class Category extends Model {
     public void setName(String name) {
         this.name = name;
     }
+
+    public List<Database> databases() {
+        return getMany(Database.class, "CATEGORY");}
 }
 
 

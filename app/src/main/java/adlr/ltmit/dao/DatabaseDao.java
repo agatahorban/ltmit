@@ -2,6 +2,9 @@ package adlr.ltmit.dao;
 
 import com.activeandroid.query.Select;
 
+import java.util.List;
+
+import adlr.ltmit.entities.Category;
 import adlr.ltmit.entities.Database;
 
 /**
@@ -19,4 +22,12 @@ public class DatabaseDao extends CrudDao<Database>  {
                 .where("DATABASE_NAME = ?",name)
                 .executeSingle();
     }
+    public static List<Database> getDatabaseFromCategory(Category category) {
+        return new Select()
+                .from(Database.class)
+                .where("Category = ?", category.getId())
+                .orderBy("Name ASC")
+                .execute();
+    }
+
 }

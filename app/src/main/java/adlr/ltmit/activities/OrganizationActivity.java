@@ -42,10 +42,10 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
     private DatabasesController dc;
 
     private EditText categoryNameET2;
-    private TextView categoryNameTv2;
+//    private TextView categoryNameTv2;
     private Button buttonCategoryOk2;
 
-    private TextView priorityTv2, categoryDbNameTv2;
+    private TextView priorityTv2;
     private RadioButton radioButton1, radioButton2, radioButton3;
     private EditText categoryDbNameET2;
 
@@ -168,12 +168,14 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
         startActivity(intent);}
         else {
             categoryNameET2 = (EditText) findViewById(R.id.categoryNameET2);
-            categoryNameTv2 = (TextView) findViewById(R.id.categoryNameTv2);
-            categoryNameTv2.setText(getString(R.string.name_of_new_category));
+//            categoryNameTv2 = (TextView) findViewById(R.id.categoryNameTv2);
+
+            categoryNameET2.setHint(getString(R.string.name_of_new_category));
+//            categoryNameTv2.setText(getString(R.string.name_of_new_category));
             buttonCategoryOk2 = (Button) findViewById(R.id.buttonCategoryOk2);
 
             priorityTv2 = (TextView) findViewById(R.id.priorityTv2);
-            categoryDbNameTv2 = (TextView) findViewById(R.id.categoryDbNameTv2);
+//            categoryDbNameTv2 = (TextView) findViewById(R.id.categoryDbNameTv2);
             categoryDbNameET2 = (EditText) findViewById(R.id.categoryDbNameET2);
             radioButton1 = (RadioButton) findViewById(R.id.radioButton);
             radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
@@ -181,14 +183,14 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
 
             if(priorityTv2.getVisibility() == View.VISIBLE){
                 priorityTv2.setVisibility(View.GONE);
-                categoryDbNameTv2.setVisibility(View.GONE);
+//                categoryDbNameTv2.setVisibility(View.GONE);
                 categoryDbNameET2.setVisibility(View.GONE);
                 radioButton1.setVisibility(View.GONE);
                 radioButton2.setVisibility(View.GONE);
                 radioButton3.setVisibility(View.GONE);
             }
             categoryNameET2.setVisibility(View.VISIBLE);
-            categoryNameTv2.setVisibility(View.VISIBLE);
+//            categoryNameTv2.setVisibility(View.VISIBLE);
             buttonCategoryOk2.setVisibility(View.VISIBLE);
 
         }
@@ -201,23 +203,24 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
         }
         else {
             categoryNameET2 = (EditText) findViewById(R.id.categoryNameET2);
-            categoryNameTv2 = (TextView) findViewById(R.id.categoryNameTv2);
-            categoryNameTv2.setText(getString(R.string.name_of_new_database));
+            categoryNameET2.setHint(getString(R.string.name_of_new_database));
+            //            categoryNameTv2 = (TextView) findViewById(R.id.categoryNameTv2);
+//            categoryNameTv2.setText(getString(R.string.name_of_new_database));
             buttonCategoryOk2 = (Button) findViewById(R.id.buttonCategoryOk2);
 
             priorityTv2 = (TextView) findViewById(R.id.priorityTv2);
-            categoryDbNameTv2 = (TextView) findViewById(R.id.categoryDbNameTv2);
+//            categoryDbNameTv2 = (TextView) findViewById(R.id.categoryDbNameTv2);
             categoryDbNameET2 = (EditText) findViewById(R.id.categoryDbNameET2);
             radioButton1 = (RadioButton) findViewById(R.id.radioButton);
             radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
             radioButton3 = (RadioButton) findViewById(R.id.radioButton3);
 
             categoryNameET2.setVisibility(View.VISIBLE);
-            categoryNameTv2.setVisibility(View.VISIBLE);
+//            categoryNameTv2.setVisibility(View.VISIBLE);
             buttonCategoryOk2.setVisibility(View.VISIBLE);
 
             priorityTv2.setVisibility(View.VISIBLE);
-            categoryDbNameTv2.setVisibility(View.VISIBLE);
+//            categoryDbNameTv2.setVisibility(View.VISIBLE);
             categoryDbNameET2.setVisibility(View.VISIBLE);
             radioButton1.setVisibility(View.VISIBLE);
             radioButton2.setVisibility(View.VISIBLE);
