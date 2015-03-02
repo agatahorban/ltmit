@@ -54,6 +54,10 @@
             android:name=".activities.DatabaseListActivity"
             android:label="@string/title_activity_database_list" >
         </activity>
+        <activity
+            android:name=".activities.DatabasesActivity"
+            android:label="@string/title_activity_databases" >
+        </activity>
     </application>
 
 </manifest>

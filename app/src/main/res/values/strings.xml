@@ -18,13 +18,19 @@
     <string name="category">CATEGORY</string>
     <string name="database">DATABASE</string>
     <string name="title_activity_create_new_category">CreateNewCategoryActivity</string>
-    <string name="name_of_new_category">Name of the new category</string>
-    <string name="name_of_new_database">Name of the new database</string>
+    <string name="name_of_new_category">Category name</string>
+    <string name="name_of_new_database">Database name</string>
     <string name="priority">Priority</string>
-    <string name="name_of_the_category">Name of the category</string>
+    <string name="name_of_the_category">Category for this database</string>
     <string name="title_activity_create_new_database">CreateNewDatabaseActivity</string>
     <string name="title_activity_database_list">DatabaseListActivity</string>
-
     <string name="settings">SETTINGS</string>
     <string name="general_statistics">GENERAL STATISTICS</string>
+    <string name="title_activity_databases">DatabasesActivity</string>
+
+    <string name="start_repeating">START REPEATING</string>
+    <string name="add_words">ADD WORDS</string>
+    <string name="edit_database">EDIT THE DATABASE</string>
+    <string name="see_statistics">SEE STATISTICS</string>
+    <string name="exit">EXIT</string>
 </resources>

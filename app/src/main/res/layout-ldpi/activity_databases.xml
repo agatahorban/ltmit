@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    tools:context="adlr.ltmit.activities.DatabasesActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="2">
+        <Button
+            android:id="@+id/startRepeatingButton"
+            android:layout_marginTop="20dp"
+            android:layout_width="185dp"
+            android:textSize="14dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button_layout"
+            android:text="@string/start_repeating"
+            android:textColor="@color/buttonTextColor"
+            android:onClick="startRepeating" />
+
+        <Button
+            android:id="@+id/addWordsButton"
+            android:layout_marginTop="20dp"
+            android:textSize="14dp"
+            android:layout_width="185dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button_layout"
+            android:text="@string/add_words"
+            android:textColor="@color/buttonTextColor"
+            android:onClick="addWords" />
+
+
+        <Button
+            android:id="@+id/editDatabaseButton"
+            android:layout_marginTop="20dp"
+            android:textSize="14dp"
+            android:layout_width="185dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button_layout"
+            android:text="@string/edit_database"
+            android:textColor="@color/buttonTextColor"
+            android:onClick="editDatabase" />
+
+        <Button
+            android:id="@+id/seeStatisticsButton"
+            android:textSize="14dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="185dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button_layout"
+            android:text="@string/see_statistics"
+            android:textColor="@color/buttonTextColor"
+            android:onClick="seeStatistics" />
+
+
+        <Button
+            android:id="@+id/exitFromDbButton"
+            android:layout_marginTop="20dp"
+            android:layout_width="185dp"
+            android:textSize="14dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button_layout"
+            android:text="@string/exit"
+            android:textColor="@color/buttonTextColor"
+            android:onClick="exit" />
+    </LinearLayout>
+</LinearLayout>

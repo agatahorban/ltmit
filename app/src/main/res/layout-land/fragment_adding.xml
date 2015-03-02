@@ -8,10 +8,10 @@
     tools:context="adlr.ltmit.activities.AddingActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="269dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_weight="1">
 
         <Button
             android:layout_marginTop="20dp"
@@ -38,6 +38,11 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="15dp"
             android:onClick="addNewDatabase"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView" />
     </LinearLayout>
 
 
@@ -50,22 +55,46 @@
        >
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginBottom="50dp">
+            android:layout_marginBottom="50dp"
+            android:layout_weight="2">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
             <EditText
                 android:layout_marginTop="20dp"
                 android:id="@+id/categoryNameET2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="5dp"
                 android:background="@drawable/edit_text_layout"
                 android:inputType="textVisiblePassword"
                 android:padding="5dip"
-                android:hint="@string/name_of_new_category"/>
+                android:hint="@string/name_of_new_category"
+                android:layout_weight="1"
+                android:textSize="13dp"/>
+
+                <EditText
+                    android:id="@+id/categoryDbNameET2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/edit_text_layout"
+                    android:inputType="textVisiblePassword"
+                    android:padding="5dip"
+                    android:hint="@string/name_of_the_category"
+                    android:layout_weight="1"
+                    android:textSize="13dp"/>
+                </LinearLayout>
 
             <TextView
                 android:id="@+id/priorityTv2"
@@ -82,6 +111,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginLeft="20dp">
+
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -104,42 +134,36 @@
                     android:button="@drawable/radiobutton_layout"/>
                 </RadioGroup>
 
-                <EditText
-                    android:id="@+id/categoryDbNameET2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/edit_text_layout"
-                    android:inputType="textVisiblePassword"
-                    android:padding="5dip"
-                    android:hint="@string/name_of_the_category"/>
+                <!--<EditText-->
+                    <!--android:id="@+id/categoryDbNameET2"-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:layout_marginLeft="20dp"-->
+                    <!--android:layout_marginRight="20dp"-->
+                    <!--android:background="@drawable/edit_text_layout"-->
+                    <!--android:inputType="textVisiblePassword"-->
+                    <!--android:padding="5dip"-->
+                    <!--android:hint="@string/name_of_the_category"/>-->
 
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="right|bottom">
 
-            <Button
-                android:id="@+id/buttonCategoryOk2"
-                android:layout_width="86dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|bottom"
-                android:layout_marginBottom="15dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/button_layout"
-                android:text="@string/ok"
-                android:textColor="@color/buttonTextColor"
-                android:onClick="saveMe2"
-
-                />
+        <Button
+            android:id="@+id/buttonCategoryOk2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/button_layout"
+            android:text="@string/ok"
+            android:textColor="@color/buttonTextColor"
+            android:onClick="saveMe2" />
 
 
-        </LinearLayout>
     </LinearLayout>
+
+
 </LinearLayout>
