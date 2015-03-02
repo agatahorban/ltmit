@@ -33,12 +33,7 @@ public class DatabasesListFragment extends ListFragment
         Intent intent = new Intent(getActivity(), DatabaseListActivity.class);
         intent.putExtra("CAT_NAME", categoryName);
         startActivity(intent);
-//        Log.d("TAG", l.getItemAtPosition(position).toString());
-//        Category c = CategoryDao.getCategoryWithSomeName(l.getItemAtPosition(position).toString());
-//
-//        for(Database db : c.databases()){
-//            Log.d("TAG", db.getName());
-//        }
+
     }
 
     @Override

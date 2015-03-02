@@ -27,10 +27,15 @@
     <string name="settings">SETTINGS</string>
     <string name="general_statistics">GENERAL STATISTICS</string>
     <string name="title_activity_databases">DatabasesActivity</string>
-
     <string name="start_repeating">START REPEATING</string>
     <string name="add_words">ADD WORDS</string>
     <string name="edit_database">EDIT THE DATABASE</string>
     <string name="see_statistics">SEE STATISTICS</string>
     <string name="exit">EXIT</string>
+    <string name="title_activity_add_word">AddWord</string>
+
+    <string name="word">Word</string>
+    <string name="translation">Translation</string>
+    <string name="add">ADD</string>
+    <string name="finish">FINISH</string>
 </resources>

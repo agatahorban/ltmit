@@ -39,5 +39,43 @@ public class Word extends Model{
         this.translation = translation;
     }
 
+    public String getMeaning() {
+        return meaning;
+    }
 
+    public void setMeaning(String meaning) {
+        this.meaning = meaning;
+    }
+
+    public String getTranslation() {
+        return translation;
+    }
+
+    public void setTranslation(String translation) {
+        this.translation = translation;
+    }
+
+    public int getIsRemembered() {
+        return isRemembered;
+    }
+
+    public void setIsRemembered(int isRemembered) {
+        this.isRemembered = isRemembered;
+    }
+
+    public int getIsCritical() {
+        return isCritical;
+    }
+
+    public void setIsCritical(int isCritical) {
+        this.isCritical = isCritical;
+    }
+
+    public Database getDatabase() {
+        return database;
+    }
+
+    public void setDatabase(Database database) {
+        this.database = database;
+    }
 }

@@ -3,8 +3,11 @@ package adlr.ltmit.activities;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -28,6 +31,7 @@ public class DatabaseListActivity extends ActionBarActivity {
                 this, R.layout.row_layout, R.id.label,
                 stringArray);
         listViewDatabases.setAdapter(adapter);
+        registerClick();
 
     }
 
@@ -53,4 +57,18 @@ public class DatabaseListActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void registerClick(){
+        listViewDatabases = (ListView) findViewById(R.id.listViewDatabases);
+        listViewDatabases.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String dbName =parent.getItemAtPosition(position).toString();
+                Intent intent = new Intent(DatabaseListActivity.this, DatabasesActivity.class);
+                intent.putExtra("DB_NAME", dbName);
+                startActivity(intent);
+            }
+        });
+    }
+
 }
