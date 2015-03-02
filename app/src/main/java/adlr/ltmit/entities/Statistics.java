@@ -19,6 +19,9 @@ public class Statistics extends Model {
     @Column(name="DATABASE", notNull = true)
     private Database database;
 
+    @Column(name="AMOUNT_OF_REPETITIONS")
+    private int amount;
+
     public Statistics() {
         super();
     }
@@ -46,5 +49,13 @@ public class Statistics extends Model {
     }
     public List<MonthStatistics> monthStatistics() {
         return getMany(MonthStatistics.class, "STATISTICS");
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }

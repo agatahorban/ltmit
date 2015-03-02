@@ -23,7 +23,7 @@
             android:value="ltm.db" />
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="4" />
+            android:value="5" />
 
         <activity
             android:name=".activities.OrganizationActivity"
@@ -33,14 +33,6 @@
         <activity
             android:name=".activities.RegistrationActivity"
             android:label="@string/title_activity_registration" >
-        </activity>
-        <activity
-            android:name=".activities.CheckingActivity"
-            android:label="@string/title_activity_checking" >
-        </activity>
-        <activity
-            android:name=".activities.AddingActivity"
-            android:label="@string/title_activity_adding" >
         </activity>
         <activity
             android:name=".activities.CreateNewCategoryActivity"

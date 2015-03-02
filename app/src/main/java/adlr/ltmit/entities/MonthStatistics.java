@@ -23,6 +23,9 @@ public class MonthStatistics extends Model {
     @Column(name = "PERCENTAGE")
     private double percentage;
 
+    @Column(name="AMOUNT_OF_REPETITIONS")
+    private int amount;
+
     public MonthStatistics(){
         super();
     }
@@ -33,5 +36,45 @@ public class MonthStatistics extends Model {
         this.whichMonth = whichMonth;
         this.statistics = statistics;
         this.percentage = 0;
+    }
+
+    public int getWhichMonth() {
+        return whichMonth;
+    }
+
+    public void setWhichMonth(int whichMonth) {
+        this.whichMonth = whichMonth;
+    }
+
+    public int getWhichYear() {
+        return whichYear;
+    }
+
+    public void setWhichYear(int whichYear) {
+        this.whichYear = whichYear;
+    }
+
+    public Statistics getStatistics() {
+        return statistics;
+    }
+
+    public void setStatistics(Statistics statistics) {
+        this.statistics = statistics;
+    }
+
+    public double getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(double percentage) {
+        this.percentage = percentage;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }
