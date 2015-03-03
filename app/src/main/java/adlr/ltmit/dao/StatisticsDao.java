@@ -1,5 +1,8 @@
 package adlr.ltmit.dao;
 
+import com.activeandroid.query.Select;
+
+import adlr.ltmit.entities.Database;
 import adlr.ltmit.entities.Statistics;
 
 /**
@@ -7,6 +10,13 @@ import adlr.ltmit.entities.Statistics;
  */
 
 public class StatisticsDao extends CrudDao<Statistics>{
+    public static Statistics getStatistics(Database db){
+        return new Select()
+                .from(Statistics.class)
+                .where("DATABS = ?", db.getId())
+                .executeSingle();
+    }
+
     public StatisticsDao() {
         super(Statistics.class);
     }

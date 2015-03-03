@@ -25,8 +25,11 @@ public class Word extends Model{
     @Column(name="IS_CRITICAL")
     private int isCritical;
 
-    @Column(name = "DATABASE", notNull = true)
+    @Column(name = "DATABS", notNull = true)
     private Database database;
+
+    @Column(name = "AMOUNT_OF_REPETITIONS")
+    private int amount;
 
     public Word(){
         super();
@@ -77,5 +80,13 @@ public class Word extends Model{
 
     public void setDatabase(Database database) {
         this.database = database;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }

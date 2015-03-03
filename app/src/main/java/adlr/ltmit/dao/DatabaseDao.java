@@ -25,7 +25,7 @@ public class DatabaseDao extends CrudDao<Database>  {
     public static List<Database> getDatabaseFromCategory(Category category) {
         return new Select()
                 .from(Database.class)
-                .where("Category = ?", category.getId())
+                .where("CATEGORY = ?", category.getId())
                 .orderBy("Name ASC")
                 .execute();
     }

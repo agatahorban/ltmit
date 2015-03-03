@@ -14,9 +14,9 @@ import java.util.List;
 public class Statistics extends Model {
 
     @Column(name = "GENERAL_STATISTICS")
-    private long generalStatistics;
+    private double generalStatistics;
 
-    @Column(name="DATABASE", notNull = true)
+    @Column(name="DATABS", notNull = true)
     private Database database;
 
     @Column(name="AMOUNT_OF_REPETITIONS")
@@ -26,16 +26,16 @@ public class Statistics extends Model {
         super();
     }
 
-    public Statistics(long generalStatistics, Database database) {
+    public Statistics(double generalStatistics, Database database) {
         this.generalStatistics = generalStatistics;
         this.database = database;
     }
 
-    public long getGeneralStatistics() {
+    public double getGeneralStatistics() {
         return generalStatistics;
     }
 
-    public void setGeneralStatistics(long generalStatistics) {
+    public void setGeneralStatistics(double generalStatistics) {
         this.generalStatistics = generalStatistics;
     }
 
