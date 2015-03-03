@@ -7,11 +7,9 @@ import junit.framework.TestCase;
 import adlr.ltmit.bl.Priority;
 import adlr.ltmit.controllers.RepeatingController;
 import adlr.ltmit.dao.StatisticsDao;
-import adlr.ltmit.dao.WordDao;
 import adlr.ltmit.entities.Category;
 import adlr.ltmit.entities.Database;
 import adlr.ltmit.entities.Statistics;
-import adlr.ltmit.entities.Word;
 
 /**
  * Created by Agata on 2015-03-03.
@@ -43,5 +41,6 @@ public class ChangingStatisticsTest extends TestCase {
         st2.delete();
         db.delete();
         cat.delete();
+
     }
 }
