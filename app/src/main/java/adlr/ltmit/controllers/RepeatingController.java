@@ -2,8 +2,11 @@ package adlr.ltmit.controllers;
 
 import com.activeandroid.query.Delete;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import adlr.ltmit.bl.Calculator;
 import adlr.ltmit.dao.DatabaseDao;
@@ -64,17 +67,54 @@ public class RepeatingController {
             double earlierPercentage = statistics.getPercentage();
             int amount = earlierAmount+1;
             double newPercentage = (earlierAmount * earlierPercentage + percentage) / amount;
-
-//            List<MonthStatistics> l = new Delete().from(MonthStatistics.class).where("WHICH_MONTH = ?",month).where("WHICH_YEAR = ?",year).where("STATISTICS = ?", stat.getId()).execute();
-
-//            MonthStatistics ms = new MonthStatistics();
-//            ms.setStatistics(stat);
             statistics.setAmount(amount);
             statistics.setPercentage(newPercentage);
             statistics.save();
         }
     }
 
+
+    public List<Word> changingOrder(List<Word> words){
+        Word[] sortedWords = new Word[words.size()];
+        int k = 0;
+        List<Integer> ints = new ArrayList<>();
+
+        Random random = new Random();
+
+        int i = 0;
+
+        int index;
+        while(i  < words.size()){
+            index = random.nextInt(words.size());
+            boolean isInList = false;
+
+            for(Integer integer : ints){
+                if(index == integer) {
+                    isInList = true;
+                    break;
+                }
+            }
+
+            while(isInList){
+                isInList = false;
+                index = random.nextInt(words.size());
+
+                for(Integer integer : ints){
+                    if(index == integer) {
+                        isInList = true;
+                        break;
+                    }
+                }
+            }
+
+
+            sortedWords[index] = words.get(i);
+            ints.add(index);
+            i++;
+        }
+
+        return new ArrayList<>(Arrays.asList(sortedWords));
+    }
 
 
 }

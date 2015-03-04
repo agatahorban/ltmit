@@ -10,26 +10,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_weight="2"
         android:orientation="vertical">
 
 
-        <TextView
-            android:id="@+id/wordButtonRepeating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="18dp"
-            android:padding="10dp"
-            android:text="@string/word" />
-
         <EditText
+            android:layout_marginTop="20dp"
             android:id="@+id/wordETRepeating"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -38,15 +24,9 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/edit_text_layout"
             android:inputType="textVisiblePassword"
-            android:padding="5dip" />
+            android:padding="5dip"
+            android:hint="@string/word"/>
 
-        <TextView
-            android:id="@+id/translationButtonRepeating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="18dp"
-            android:padding="10dp"
-            android:text="@string/translation" />
 
         <EditText
             android:id="@+id/translationETRepeating"
@@ -57,7 +37,8 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/edit_text_layout"
             android:inputType="textVisiblePassword"
-            android:padding="5dip" />
+            android:padding="5dip"
+            android:hint="@string/translation"/>
 
         <TextView
             android:layout_width="wrap_content"

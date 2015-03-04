@@ -85,7 +85,7 @@ public class Database extends Model {
     }
 
     public List<Word> words() {
-        return getMany(Word.class, "DATABASE");}
+        return getMany(Word.class, "DATABS");}
 
 
 }

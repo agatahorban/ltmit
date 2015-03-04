@@ -23,7 +23,6 @@ public class MonthStatisticsTest extends TestCase {
         Database db = new Database(Priority.HIGH.getValue(), cat, "db11123992");
         db.save();
 
-
         Statistics st = new Statistics(85.0,db);
         st.setAmount(1);
         st.save();
