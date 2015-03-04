@@ -1,15 +1,20 @@
 package adlr.ltmit.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import adlr.ltmit.R;
@@ -103,6 +108,42 @@ public class RepeatingActivity extends ActionBarActivity {
         else {
             double percentage = rc.countPercentage(words);
 
+            AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
+            builder.setTitle("");
+            StringBuilder sb = new StringBuilder();
+            sb.append(getResources().getString(R.string.percentage));
+            sb.append(" ");
+            sb.append(new DecimalFormat("##.##").format(percentage));
+            sb.append("%");
+            sb.append("\n");
+            sb.append(getResources().getString(R.string.wantLearn));
+            builder.setMessage(sb.toString());
+
+            builder.setPositiveButton("SURE", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Log.d("AGH","sure");
+                }
+            });
+            builder.setNegativeButton("NOT NOW", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    RepeatingActivity.this.finish();
+                }
+            });
+            builder.setCancelable(false);
+            AlertDialog dialog =  builder.show();
+
+            int titleDividerId = getResources().getIdentifier("titleDivider", "id", "android");
+            View titleDivider = dialog.findViewById(titleDividerId);
+            if (titleDivider != null)
+                titleDivider.setBackgroundColor(getResources().getColor(android.R.color.secondary_text_dark_nodisable));
+
+            Button bt = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            bt.setBackgroundResource(R.drawable.alert_button_layout);
+            Button bt2 = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+            bt2.setBackgroundResource(R.drawable.alert_button_layout2);
+
             Word previous = words.get(counter);
             properAnswerTv.setText("Proper answer: " + previous.getTranslation() +" END");
 
@@ -128,10 +169,6 @@ public class RepeatingActivity extends ActionBarActivity {
             db.setDateToRepeat(Calculator.calculateDate(System.currentTimeMillis(),db.getPriority(),percentage));
 
             rc.deleteTemporaryDb();
-
-
-
-
         }
 
     }

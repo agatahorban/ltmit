@@ -38,4 +38,7 @@
     <string name="translation">Translation</string>
     <string name="add">ADD</string>
     <string name="finish">FINISH</string>
+
+    <string name="percentage">Percentage: </string>
+    <string name="wantLearn">Do you want to repeat problematic words?</string>
 </resources>
