@@ -76,6 +76,10 @@ public class RepeatingController {
     public List<Word> findProperDatabaseWords(String databaseName){
         return DatabaseDao.getDabatabaseWithSomeName(databaseName).words();
     }
+
+    public Database findProperDatabase(String databaseName){
+        return DatabaseDao.getDabatabaseWithSomeName(databaseName);
+    }
     public List<Word> changingOrder(List<Word> words){
         Word[] sortedWords = new Word[words.size()];
         int k = 0;
@@ -108,8 +112,6 @@ public class RepeatingController {
                     }
                 }
             }
-
-
             sortedWords[index] = words.get(i);
             ints.add(index);
             i++;
@@ -118,5 +120,43 @@ public class RepeatingController {
         return new ArrayList<>(Arrays.asList(sortedWords));
     }
 
+    public void savingTemporaryData(List<Word> words, String db){
+        deleteTemporaryDb();
+
+        Category cat = DatabaseDao.getDabatabaseWithSomeName(db).getCategory();
+        Database datb = new Database(1,cat,"temporary");
+        datb.save();
+        for(Word w : words){
+            Word tempW = new Word();
+            tempW.setAmount(w.getAmount());
+            tempW.setIsCritical(w.getIsCritical());
+            tempW.setIsRemembered(w.getIsRemembered());
+            tempW.setDatabase(datb);
+            tempW.setMeaning(w.getMeaning());
+            tempW.setTranslation(w.getTranslation());
+            tempW.save();
+        }
+    }
+
+    public void deleteTemporaryDb(){
+        if(DatabaseDao.getDabatabaseWithSomeName("temporary")!=null) {
+            if (!DatabaseDao.getDabatabaseWithSomeName("temporary").words().isEmpty()) {
+                for (Word w : DatabaseDao.getDabatabaseWithSomeName("temporary").words())
+                    w.delete();
+            }
+            DatabaseDao.getDabatabaseWithSomeName("temporary").delete();
+        }
+    }
+
+
+    public double countPercentage(List<Word> words) {
+        int remem = 0;
+        for(Word w : words){
+            if(w.getIsRemembered()==1){
+               remem++;
+            }
+        }
+        return (double) remem / words.size() * 100;
+    }
 
 }

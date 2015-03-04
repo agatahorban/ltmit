@@ -3,6 +3,7 @@ package adlr.ltmit.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,7 +12,11 @@ import android.widget.EditText;
 import java.util.List;
 
 import adlr.ltmit.R;
+import adlr.ltmit.bl.Calculator;
 import adlr.ltmit.controllers.RepeatingController;
+import adlr.ltmit.dao.StatisticsDao;
+import adlr.ltmit.entities.Database;
+import adlr.ltmit.entities.Statistics;
 import adlr.ltmit.entities.Word;
 
 /**
@@ -24,6 +29,7 @@ public class RepeatingActivity extends ActionBarActivity {
     private List<Word> words;
     private int counter = 0;
     private EditText wordETRepeating, translationETRepeating;
+    private Database db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +38,17 @@ public class RepeatingActivity extends ActionBarActivity {
         Intent intent = getIntent();
         dbName = intent.getStringExtra("DB_NAME");
         rc = new RepeatingController();
-
+        db = rc.findProperDatabase(dbName);
         wordETRepeating = (EditText) findViewById(R.id.wordETRepeating);
         translationETRepeating = (EditText) findViewById(R.id.translationETRepeating);
 
-        if(savedInstanceState == null)
+        if(savedInstanceState == null) {
             words = rc.changingOrder(rc.findProperDatabaseWords(dbName));
-
+            rc.savingTemporaryData(words, dbName);
+        }
         if (savedInstanceState !=null) {
             counter = savedInstanceState.getInt("COUNTER", counter);
+            words = rc.findProperDatabaseWords("temporary");
 
         }
         wordETRepeating.setText(words.get(counter).getMeaning());
@@ -77,7 +85,45 @@ public class RepeatingActivity extends ActionBarActivity {
     }
 
     public void nextWord(View view){
-        counter++;
-        wordETRepeating.setText(words.get(counter).getMeaning());
+        if(counter<words.size()-1){
+        Word w = words.get(counter);
+        if(translationETRepeating.getText().toString().equals(w.getTranslation())){
+            w.setIsRemembered(1);
+        }
+        translationETRepeating.setText("");
+
+            counter++;
+            wordETRepeating.setText(words.get(counter).getMeaning());
+        }
+
+        else {
+            double percentage = rc.countPercentage(words);
+            if(db.getStatistics() == null) {
+                Statistics stat = new Statistics(0.0, db);
+                stat.save();
+            }
+            rc.setStatistics(dbName,percentage);
+
+            Statistics stat = StatisticsDao.getStatistics(db);
+
+            rc.setMonthStatistics(stat,percentage);
+
+            for(Word word : db.words())
+            {
+                word.setIsRemembered(0);
+                word.setIsCritical(0);
+                word.setAmount(0);
+                word.save();
+            }
+
+            db.setDateToRepeat(Calculator.calculateDate(System.currentTimeMillis(),db.getPriority(),percentage));
+
+            rc.deleteTemporaryDb();
+
+            Log.d("PERCENTAGE", Double.toString(percentage));
+
+            this.finish();
+        }
+
     }
 }
