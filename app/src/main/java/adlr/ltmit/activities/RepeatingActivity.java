@@ -38,6 +38,7 @@ public class RepeatingActivity extends ActionBarActivity {
     private Database db;
     private TextView properAnswerTv;
 
+    private Word seenWord;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,17 +51,16 @@ public class RepeatingActivity extends ActionBarActivity {
         translationETRepeating = (EditText) findViewById(R.id.translationETRepeating);
         properAnswerTv = (TextView) findViewById(R.id.properAnswerTv);
 
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             words = rc.changingOrder(rc.findProperDatabaseWords(dbName));
             rc.savingTemporaryData(words, dbName);
         }
-        if (savedInstanceState !=null) {
+        if (savedInstanceState != null) {
             counter = savedInstanceState.getInt("COUNTER", counter);
             words = rc.findProperDatabaseWords("temporary");
-
         }
-        wordETRepeating.setText(words.get(counter).getMeaning());
-
+        seenWord = words.get(counter);
+        wordETRepeating.setText(seenWord.getMeaning());
     }
 
 
@@ -90,23 +90,26 @@ public class RepeatingActivity extends ActionBarActivity {
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putInt("COUNTER", counter);
+        savedInstanceState.putString("TRANSLATION", seenWord.getTranslation());
+        savedInstanceState.putString("PROPER_ANSWER", "Proper answer: " + seenWord.getTranslation());
     }
 
     public void nextWord(View view){
         if(counter<words.size()-1){
-        Word w = words.get(counter);
-        Word previous = words.get(counter);
-        if(translationETRepeating.getText().toString().equals(w.getTranslation())){
-            w.setIsRemembered(1);
+        if(translationETRepeating.getText().toString().equals(seenWord.getTranslation())){
+            seenWord.setIsRemembered(1);
+            seenWord.save();
         }
         translationETRepeating.setText("");
-        properAnswerTv.setText("Proper answer: " + previous.getTranslation());
+        properAnswerTv.setText("Proper answer: " + seenWord.getTranslation());
             counter++;
-            wordETRepeating.setText(words.get(counter).getMeaning());
+            seenWord = words.get(counter);
+            wordETRepeating.setText(seenWord.getMeaning());
         }
 
         else {
             double percentage = rc.countPercentage(words);
+            properAnswerTv.setText("Proper answer: " + seenWord.getTranslation() +" END");
 
             AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
             builder.setTitle("");
@@ -144,8 +147,7 @@ public class RepeatingActivity extends ActionBarActivity {
             Button bt2 = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
             bt2.setBackgroundResource(R.drawable.alert_button_layout2);
 
-            Word previous = words.get(counter);
-            properAnswerTv.setText("Proper answer: " + previous.getTranslation() +" END");
+
 
 
             if(db.getStatistics() == null) {
