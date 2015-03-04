@@ -5,19 +5,45 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 
+import java.util.List;
+
 import adlr.ltmit.R;
-import adlr.ltmit.controllers.DatabasesController;
+import adlr.ltmit.controllers.RepeatingController;
+import adlr.ltmit.entities.Word;
 
 /**
  * Created by Agata on 2015-03-02.
  */
+
 public class RepeatingActivity extends ActionBarActivity {
+    private String dbName;
+    private RepeatingController rc;
+    private List<Word> words;
+    private int counter = 0;
+    private EditText wordETRepeating, translationETRepeating;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_repeating);
+        Intent intent = getIntent();
+        dbName = intent.getStringExtra("DB_NAME");
+        rc = new RepeatingController();
+
+        wordETRepeating = (EditText) findViewById(R.id.wordETRepeating);
+        translationETRepeating = (EditText) findViewById(R.id.translationETRepeating);
+
+        if(savedInstanceState == null)
+            words = rc.changingOrder(rc.findProperDatabaseWords(dbName));
+
+        if (savedInstanceState !=null) {
+            counter = savedInstanceState.getInt("COUNTER", counter);
+
+        }
+        wordETRepeating.setText(words.get(counter).getMeaning());
 
     }
 
@@ -42,5 +68,16 @@ public class RepeatingActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt("COUNTER", counter);
+    }
+
+    public void nextWord(View view){
+        counter++;
+        wordETRepeating.setText(words.get(counter).getMeaning());
     }
 }

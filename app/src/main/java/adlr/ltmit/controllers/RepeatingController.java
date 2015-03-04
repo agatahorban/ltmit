@@ -73,7 +73,9 @@ public class RepeatingController {
         }
     }
 
-
+    public List<Word> findProperDatabaseWords(String databaseName){
+        return DatabaseDao.getDabatabaseWithSomeName(databaseName).words();
+    }
     public List<Word> changingOrder(List<Word> words){
         Word[] sortedWords = new Word[words.size()];
         int k = 0;

@@ -48,4 +48,10 @@ public class DatabasesActivity extends ActionBarActivity {
         intent.putExtra("DB_NAME", dbName);
         startActivity(intent);
     }
+
+    public void startRepeating(View view){
+        Intent intent = new Intent(DatabasesActivity.this, RepeatingActivity.class);
+        intent.putExtra("DB_NAME", dbName);
+        startActivity(intent);
+    }
 }
