@@ -54,4 +54,8 @@ public class DatabasesActivity extends ActionBarActivity {
         intent.putExtra("DB_NAME", dbName);
         startActivity(intent);
     }
+
+    public void exit(View view){
+        this.finish();
+    }
 }

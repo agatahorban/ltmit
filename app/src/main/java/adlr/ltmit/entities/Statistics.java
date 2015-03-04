@@ -27,8 +27,10 @@ public class Statistics extends Model {
     }
 
     public Statistics(double generalStatistics, Database database) {
+        super();
         this.generalStatistics = generalStatistics;
         this.database = database;
+        database.setStatistics(this);
     }
 
     public double getGeneralStatistics() {

@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class RepeatingActivity extends ActionBarActivity {
     private int counter = 0;
     private EditText wordETRepeating, translationETRepeating;
     private Database db;
+    private TextView properAnswerTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class RepeatingActivity extends ActionBarActivity {
         db = rc.findProperDatabase(dbName);
         wordETRepeating = (EditText) findViewById(R.id.wordETRepeating);
         translationETRepeating = (EditText) findViewById(R.id.translationETRepeating);
+        properAnswerTv = (TextView) findViewById(R.id.properAnswerTv);
 
         if(savedInstanceState == null) {
             words = rc.changingOrder(rc.findProperDatabaseWords(dbName));
@@ -87,17 +90,23 @@ public class RepeatingActivity extends ActionBarActivity {
     public void nextWord(View view){
         if(counter<words.size()-1){
         Word w = words.get(counter);
+        Word previous = words.get(counter);
         if(translationETRepeating.getText().toString().equals(w.getTranslation())){
             w.setIsRemembered(1);
         }
         translationETRepeating.setText("");
-
+        properAnswerTv.setText("Proper answer: " + previous.getTranslation());
             counter++;
             wordETRepeating.setText(words.get(counter).getMeaning());
         }
 
         else {
             double percentage = rc.countPercentage(words);
+
+            Word previous = words.get(counter);
+            properAnswerTv.setText("Proper answer: " + previous.getTranslation() +" END");
+
+
             if(db.getStatistics() == null) {
                 Statistics stat = new Statistics(0.0, db);
                 stat.save();
@@ -120,10 +129,14 @@ public class RepeatingActivity extends ActionBarActivity {
 
             rc.deleteTemporaryDb();
 
-            Log.d("PERCENTAGE", Double.toString(percentage));
 
-            this.finish();
+
+
         }
 
+    }
+
+    public void finishMe(View view){
+        this.finish();
     }
 }
