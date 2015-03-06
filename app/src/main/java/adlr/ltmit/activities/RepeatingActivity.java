@@ -4,9 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.UserDictionary;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,12 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import adlr.ltmit.R;
-import adlr.ltmit.bl.Calculator;
 import adlr.ltmit.controllers.RepeatingController;
 import adlr.ltmit.entities.Database;
 import adlr.ltmit.entities.Word;
@@ -75,19 +70,13 @@ public class RepeatingActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_add_word, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -104,9 +93,8 @@ public class RepeatingActivity extends ActionBarActivity {
 
     public void nextWord(View view) {
         if (counter < words.size() - 1) {
-            if (translationETRepeating.getText().toString().equals(seenWord.getTranslation())) {
-                seenWord.setIsRemembered(1);
-                seenWord.save();
+                if (translationETRepeating.getText().toString().equals(seenWord.getTranslation())) {
+                rc.editWordIsRemembered(seenWord,1);
             }
 
             translationETRepeating.setText("");
@@ -114,10 +102,10 @@ public class RepeatingActivity extends ActionBarActivity {
             counter++;
             seenWord = words.get(counter);
             wordETRepeating.setText(seenWord.getMeaning());
+
         } else {
             if (translationETRepeating.getText().toString().equals(seenWord.getTranslation())) {
-                seenWord.setIsRemembered(1);
-                seenWord.save();
+                rc.editWordIsRemembered(seenWord,1);
             }
 
             percentage = rc.countPercentage(words);
@@ -126,13 +114,9 @@ public class RepeatingActivity extends ActionBarActivity {
             if(isFirstTime) {
                 rc.setStatistics(dbName, percentage);
                 rc.setMonthStatistics(rc.findProperDatabase(dbName), percentage);
-
             }
 
-            for (int i = words.size() - 1; i > -1; i--) {
-                if (words.get(i).getIsRemembered() == 1)
-                    words.remove(words.get(i));
-            }
+            rc.removeWordsRemembered(words);
 
             if(percentage!=100.0) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
@@ -195,18 +179,8 @@ public class RepeatingActivity extends ActionBarActivity {
             }
 
 
-            for (Word word : db.words()) {
-                word.setIsRemembered(0);
-                word.setIsCritical(0);
-                word.setAmount(0);
-                word.save();
-            }
-
-            db.setDateToRepeat(Calculator.calculateDate(System.currentTimeMillis(), db.getPriority(), percentage));
-            db.save();
-            Date d = db.getDateToRepeat();
-            Log.d("DATE", Calculator.getDay(d) + " " + Calculator.getMonth(d) + " " + Calculator.getYear(d));
-            Log.d("PRIORITY", db.getPriority() + "");
+            rc.zeroAllWords(db.words());
+            rc.setNewDate(db,percentage);
             rc.deleteTemporaryDb();
         }
     }

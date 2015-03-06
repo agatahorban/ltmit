@@ -26,8 +26,7 @@ public class DatabasesListFragment extends ListFragment
 {
     CategoriesController cc;
     String[] stringArray;
-    LayoutInflater inf;
-    CategoryDao cd;
+
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         String categoryName =l.getItemAtPosition(position).toString();
@@ -49,7 +48,6 @@ public class DatabasesListFragment extends ListFragment
                 inflater.getContext(), R.layout.row_layout, R.id.label,
                 stringArray);
         setListAdapter(adapter);
-        inf = inflater;
         return v;
     }
 

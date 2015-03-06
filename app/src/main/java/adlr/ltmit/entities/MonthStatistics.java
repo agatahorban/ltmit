@@ -17,9 +17,6 @@ public class MonthStatistics extends Model {
     @Column(name = "WHICH_YEAR")
     private int whichYear;
 
-//    @Column(name= "STATISTICS", notNull = true)
-//    private Statistics statistics;
-
     @Column(name = "DATABS")
     private Database db;
 
@@ -56,14 +53,6 @@ public class MonthStatistics extends Model {
     public void setWhichYear(int whichYear) {
         this.whichYear = whichYear;
     }
-
-//    public Statistics getStatistics() {
-//        return statistics;
-//    }
-//
-//    public void setStatistics(Statistics statistics) {
-//        this.statistics = statistics;
-//    }
 
     public double getPercentage() {
         return percentage;

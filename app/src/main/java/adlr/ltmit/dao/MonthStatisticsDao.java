@@ -1,12 +1,7 @@
 package adlr.ltmit.dao;
 
 import com.activeandroid.query.Select;
-
-import java.util.List;
-
-import adlr.ltmit.entities.Database;
 import adlr.ltmit.entities.MonthStatistics;
-import adlr.ltmit.entities.Word;
 
 
 /**

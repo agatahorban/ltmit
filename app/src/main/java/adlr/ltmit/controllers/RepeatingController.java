@@ -1,7 +1,5 @@
 package adlr.ltmit.controllers;
 
-import com.activeandroid.query.Delete;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -22,19 +20,30 @@ import adlr.ltmit.entities.Word;
 
 public class RepeatingController {
 
-    public static void mainWordLogic(Word word, int isRembembered){
-        if(isRembembered==1)
-            word.setIsRemembered(isRembembered);
-        else {
-            word.setAmount(word.getAmount()+1);
-            word.save();
-            if(word.getAmount()>=3)
-                word.setIsCritical(1);
-        }
-    }
     public void editWordIsRemembered(Word word, int isRemembered){
         word.setIsRemembered(isRemembered);
         word.save();
+    }
+
+    public void removeWordsRemembered(List<Word> words){
+        for (int i = words.size() - 1; i > -1; i--) {
+            if (words.get(i).getIsRemembered() == 1)
+                words.remove(words.get(i));
+        }
+    }
+
+    public void zeroAllWords(List<Word> words){
+        for (Word word : words) {
+            word.setIsRemembered(0);
+            word.setIsCritical(0);
+            word.setAmount(0);
+            word.save();
+        }
+    }
+
+    public void setNewDate(Database db, double percentage){
+        db.setDateToRepeat(Calculator.calculateDate(System.currentTimeMillis(), db.getPriority(), percentage));
+        db.save();
     }
 
     public void setStatistics(String db, double percentage){

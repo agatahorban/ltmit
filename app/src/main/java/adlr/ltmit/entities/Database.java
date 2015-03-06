@@ -26,9 +26,6 @@ public class Database extends Model {
     @Column(name = "CATEGORY")
     private Category category;
 
-//    @Column(name = "STATISTICS")
-//    private Statistics statistics;
-
     @Column(name = "GENERAL_STATISTICS")
     private double generalStatistics;
 
@@ -79,18 +76,6 @@ public class Database extends Model {
     public void setCategory(Category category) {
         this.category = category;
     }
-
-//    public Database(Statistics statistics) {
-//        this.statistics = statistics;
-//    }
-//
-//    public Statistics getStatistics() {
-//        return statistics;
-//    }
-//
-//    public void setStatistics(Statistics statistics) {
-//        this.statistics = statistics;
-//    }
 
     public List<Word> words() {
         return getMany(Word.class, "DATABS");}

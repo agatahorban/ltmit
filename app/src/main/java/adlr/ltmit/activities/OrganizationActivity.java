@@ -10,7 +10,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,7 +41,6 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
     private DatabasesController dc;
 
     private EditText categoryNameET2;
-//    private TextView categoryNameTv2;
     private Button buttonCategoryOk2;
 
     private TextView priorityTv2;
@@ -77,48 +75,34 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
         actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        ActionBar.Tab tab1 = actionBar.newTab();
-        tab1.setText("DATABASES");
-        tab1.setTabListener(this);
-
-        ActionBar.Tab tab2 = actionBar.newTab();
-        tab2.setText("YOUR PROFILE");
-        tab2.setTabListener(this);
-
-        ActionBar.Tab tab3 = actionBar.newTab();
-        tab3.setText("CREATE NEW...");
-        tab3.setTabListener(this);
-
-        actionBar.addTab(tab1);
-        actionBar.addTab(tab2);
-        actionBar.addTab(tab3);
+        createTab(getResources().getString(R.string.databases),actionBar);
+        createTab(getResources().getString(R.string.your_profile),actionBar);
+        createTab(getResources().getString(R.string.create_new),actionBar);
 
         cc = new CategoriesController();
         dc = new DatabasesController();
 
     }
 
-
-
+    private ActionBar.Tab createTab(String text, ActionBar bar){
+        ActionBar.Tab tab = actionBar.newTab();
+        tab.setText(text);
+        tab.setTabListener(this);
+        actionBar.addTab(tab);
+        return tab;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_organization, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -168,14 +152,9 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
         startActivity(intent);}
         else {
             categoryNameET2 = (EditText) findViewById(R.id.categoryNameET2);
-//            categoryNameTv2 = (TextView) findViewById(R.id.categoryNameTv2);
-
             categoryNameET2.setHint(getString(R.string.name_of_new_category));
-//            categoryNameTv2.setText(getString(R.string.name_of_new_category));
             buttonCategoryOk2 = (Button) findViewById(R.id.buttonCategoryOk2);
-
             priorityTv2 = (TextView) findViewById(R.id.priorityTv2);
-//            categoryDbNameTv2 = (TextView) findViewById(R.id.categoryDbNameTv2);
             categoryDbNameET2 = (EditText) findViewById(R.id.categoryDbNameET2);
             radioButton1 = (RadioButton) findViewById(R.id.radioButton);
             radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
@@ -183,14 +162,12 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
 
             if(priorityTv2.getVisibility() == View.VISIBLE){
                 priorityTv2.setVisibility(View.GONE);
-//                categoryDbNameTv2.setVisibility(View.GONE);
                 categoryDbNameET2.setVisibility(View.GONE);
                 radioButton1.setVisibility(View.GONE);
                 radioButton2.setVisibility(View.GONE);
                 radioButton3.setVisibility(View.GONE);
             }
             categoryNameET2.setVisibility(View.VISIBLE);
-//            categoryNameTv2.setVisibility(View.VISIBLE);
             buttonCategoryOk2.setVisibility(View.VISIBLE);
 
         }
@@ -204,23 +181,17 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
         else {
             categoryNameET2 = (EditText) findViewById(R.id.categoryNameET2);
             categoryNameET2.setHint(getString(R.string.name_of_new_database));
-            //            categoryNameTv2 = (TextView) findViewById(R.id.categoryNameTv2);
-//            categoryNameTv2.setText(getString(R.string.name_of_new_database));
             buttonCategoryOk2 = (Button) findViewById(R.id.buttonCategoryOk2);
-
             priorityTv2 = (TextView) findViewById(R.id.priorityTv2);
-//            categoryDbNameTv2 = (TextView) findViewById(R.id.categoryDbNameTv2);
             categoryDbNameET2 = (EditText) findViewById(R.id.categoryDbNameET2);
             radioButton1 = (RadioButton) findViewById(R.id.radioButton);
             radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
             radioButton3 = (RadioButton) findViewById(R.id.radioButton3);
 
             categoryNameET2.setVisibility(View.VISIBLE);
-//            categoryNameTv2.setVisibility(View.VISIBLE);
             buttonCategoryOk2.setVisibility(View.VISIBLE);
 
             priorityTv2.setVisibility(View.VISIBLE);
-//            categoryDbNameTv2.setVisibility(View.VISIBLE);
             categoryDbNameET2.setVisibility(View.VISIBLE);
             radioButton1.setVisibility(View.VISIBLE);
             radioButton2.setVisibility(View.VISIBLE);
@@ -241,13 +212,8 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
                 else if (radioButton2.isChecked()) prio = Priority.MEDIUM.getValue();
                 else prio = Priority.LOW.getValue();
                 dc.addNewDatabase(categoryNameET2.getText().toString(),categoryDbNameET2.getText().toString(), prio);
-                DatabaseDao dd = new DatabaseDao();
-                for(Database db : dd.selectAll()){
-                    Log.d("DATABASE_LOG", db.getName() + " "+ db.getPriority() + " " + db.getCategory());
-                }
             }
     }
-
 
     public int getScreenOrientation()
     {
