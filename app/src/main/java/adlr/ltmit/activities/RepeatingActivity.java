@@ -24,9 +24,7 @@ import java.util.List;
 import adlr.ltmit.R;
 import adlr.ltmit.bl.Calculator;
 import adlr.ltmit.controllers.RepeatingController;
-import adlr.ltmit.dao.StatisticsDao;
 import adlr.ltmit.entities.Database;
-import adlr.ltmit.entities.Statistics;
 import adlr.ltmit.entities.Word;
 
 /**
@@ -126,14 +124,8 @@ public class RepeatingActivity extends ActionBarActivity {
             properAnswerTv.setText("Proper answer: " + seenWord.getTranslation());
 
             if(isFirstTime) {
-                if (db.getStatistics() == null) {
-                    Statistics stat = new Statistics(0.0, db);
-                    stat.save();
-                }
                 rc.setStatistics(dbName, percentage);
-                Statistics stat = StatisticsDao.getStatistics(db);
-                rc.setMonthStatistics(stat, percentage);
-                Log.d("STATISTICS", "DONE");
+                rc.setMonthStatistics(rc.findProperDatabase(dbName), percentage);
 
             }
 

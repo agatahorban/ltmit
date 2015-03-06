@@ -11,11 +11,9 @@ import java.util.Random;
 import adlr.ltmit.bl.Calculator;
 import adlr.ltmit.dao.DatabaseDao;
 import adlr.ltmit.dao.MonthStatisticsDao;
-import adlr.ltmit.dao.StatisticsDao;
 import adlr.ltmit.entities.Category;
 import adlr.ltmit.entities.Database;
 import adlr.ltmit.entities.MonthStatistics;
-import adlr.ltmit.entities.Statistics;
 import adlr.ltmit.entities.Word;
 
 /**
@@ -41,23 +39,23 @@ public class RepeatingController {
 
     public void setStatistics(String db, double percentage){
         Database database = DatabaseDao.getDatabaseWithSomeName(db);
-        Statistics stat = StatisticsDao.getStatistics(database);
-        int earlierAmount = stat.getAmount();
-        double earlierPercentage = stat.getGeneralStatistics();
+        int earlierAmount = database.getAmount();
+        double earlierPercentage = database.getGeneralStatistics();
         int amount = earlierAmount+1;
         double newPercentage = (earlierAmount * earlierPercentage + percentage) / amount;
-        stat.setAmount(amount);
-        stat.setGeneralStatistics(newPercentage);
-        stat.save();
+        database.setAmount(amount);
+        database.setGeneralStatistics(newPercentage);
+        database.save();
     }
 
-    public void setMonthStatistics(Statistics stat, double percentage){
+    public void setMonthStatistics(Database db, double percentage){
         Date today = new Date(System.currentTimeMillis());
         int year = Calculator.getYear(today);
         int month = Calculator.getMonth(today);
-        MonthStatistics statistics = MonthStatisticsDao.getStatistics(month, year, stat);
-        if(statistics == null || !(statistics.getStatistics().equals(stat))){
-            MonthStatistics ms = new MonthStatistics(year, month, stat);
+        MonthStatistics statistics = MonthStatisticsDao.getStatistics(month, year);
+        if(statistics == null || !(statistics.getDb().getName().equals(db.getName())))
+        {
+            MonthStatistics ms = new MonthStatistics(year, month, db);
             ms.setAmount(1);
             ms.setPercentage(percentage);
             ms.save();

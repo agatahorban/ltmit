@@ -1,5 +1,7 @@
 package adlr.ltmit.bl;
 
+import android.util.Log;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -44,5 +46,23 @@ public class Calculator {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         return calendar;
+    }
+
+    public static boolean isMoreThan14Days(Date date){
+        long today = System.currentTimeMillis();
+
+        long d = date.getTime();
+        long count = d - today;
+            if(count>DAY*14)
+                return true;
+            else
+                return false;
+
+    }
+    public static int calculateDays(Date date){
+        double d = date.getTime() - System.currentTimeMillis();
+        double t = Math.round(d / DAY);
+        Log.d("DAYS",t+ "" );
+        return (int)t;
     }
 }

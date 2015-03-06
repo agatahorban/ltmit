@@ -17,8 +17,11 @@ public class MonthStatistics extends Model {
     @Column(name = "WHICH_YEAR")
     private int whichYear;
 
-    @Column(name= "STATISTICS", notNull = true)
-    private Statistics statistics;
+//    @Column(name= "STATISTICS", notNull = true)
+//    private Statistics statistics;
+
+    @Column(name = "DATABS")
+    private Database db;
 
     @Column(name = "PERCENTAGE")
     private double percentage;
@@ -30,11 +33,11 @@ public class MonthStatistics extends Model {
         super();
     }
 
-    public MonthStatistics(int whichYear, int whichMonth, Statistics statistics) {
+    public MonthStatistics(int whichYear, int whichMonth, Database db) {
         super();
         this.whichYear = whichYear;
         this.whichMonth = whichMonth;
-        this.statistics = statistics;
+        this.db = db;
         this.percentage = 0;
     }
 
@@ -54,13 +57,13 @@ public class MonthStatistics extends Model {
         this.whichYear = whichYear;
     }
 
-    public Statistics getStatistics() {
-        return statistics;
-    }
-
-    public void setStatistics(Statistics statistics) {
-        this.statistics = statistics;
-    }
+//    public Statistics getStatistics() {
+//        return statistics;
+//    }
+//
+//    public void setStatistics(Statistics statistics) {
+//        this.statistics = statistics;
+//    }
 
     public double getPercentage() {
         return percentage;
@@ -76,5 +79,13 @@ public class MonthStatistics extends Model {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public Database getDb() {
+        return db;
+    }
+
+    public void setDb(Database db) {
+        this.db = db;
     }
 }

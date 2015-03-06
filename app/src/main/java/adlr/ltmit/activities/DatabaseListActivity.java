@@ -11,6 +11,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.text.SimpleDateFormat;
+
 import adlr.ltmit.R;
 import adlr.ltmit.bl.Calculator;
 import adlr.ltmit.bl.DatabaseItem;
@@ -45,8 +47,19 @@ public class DatabaseListActivity extends ActionBarActivity {
 
         Category cat = CategoryDao.getCategoryWithSomeName(database);
         int i = 0;
+        String date;
         for(Database d : cat.databases()){
-            DatabaseItem di = new DatabaseItem(d.getName(),R.drawable.icon1, Calculator.getDay(d.getDateToRepeat())+ " " + Calculator.getMonth(d.getDateToRepeat()));
+            if(Calculator.isMoreThan14Days(d.getDateToRepeat())) {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+                date = sdf.format(d.getDateToRepeat());
+            }
+            else{
+                StringBuilder sb = new StringBuilder();
+                sb.append(Calculator.calculateDays(d.getDateToRepeat()));
+                sb.append(" days");
+                date = sb.toString();
+            }
+            DatabaseItem di = new DatabaseItem(d.getName(),R.drawable.icon1, date);
             dbItems[i] = di;
             i++;
         }
@@ -54,12 +67,7 @@ public class DatabaseListActivity extends ActionBarActivity {
         DbAdapter adapter = new DbAdapter(this,
                 R.layout.listview_item_row, dbItems);
 
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-//                this, R.layout.row_layout, R.id.label,
-//                stringArray);
         listViewDatabases.setAdapter(adapter);
-
-
         registerClick();
 
     }

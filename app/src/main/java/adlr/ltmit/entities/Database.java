@@ -26,8 +26,14 @@ public class Database extends Model {
     @Column(name = "CATEGORY")
     private Category category;
 
-    @Column(name = "STATISTICS")
-    private Statistics statistics;
+//    @Column(name = "STATISTICS")
+//    private Statistics statistics;
+
+    @Column(name = "GENERAL_STATISTICS")
+    private double generalStatistics;
+
+    @Column(name="AMOUNT_OF_REPETITIONS")
+    private int amount;
 
     public Database(){
         this.dateToRepeat =  new Date(System.currentTimeMillis());
@@ -38,6 +44,8 @@ public class Database extends Model {
         this.category = category;
         this.name = name;
         this.dateToRepeat = new Date(System.currentTimeMillis());
+        this.amount = 0;
+        this.generalStatistics = 0;
     }
 
     public String getName() {
@@ -72,20 +80,41 @@ public class Database extends Model {
         this.category = category;
     }
 
-    public Database(Statistics statistics) {
-        this.statistics = statistics;
-    }
-
-    public Statistics getStatistics() {
-        return statistics;
-    }
-
-    public void setStatistics(Statistics statistics) {
-        this.statistics = statistics;
-    }
+//    public Database(Statistics statistics) {
+//        this.statistics = statistics;
+//    }
+//
+//    public Statistics getStatistics() {
+//        return statistics;
+//    }
+//
+//    public void setStatistics(Statistics statistics) {
+//        this.statistics = statistics;
+//    }
 
     public List<Word> words() {
         return getMany(Word.class, "DATABS");}
+
+
+    public List<MonthStatistics> monthStatistics() {
+                return getMany(MonthStatistics.class, "DATABS");
+    }
+
+    public double getGeneralStatistics() {
+        return generalStatistics;
+    }
+
+    public void setGeneralStatistics(double generalStatistics) {
+        this.generalStatistics = generalStatistics;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 
 
 }
