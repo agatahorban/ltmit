@@ -12,12 +12,23 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import adlr.ltmit.R;
+import adlr.ltmit.bl.Calculator;
+import adlr.ltmit.bl.DatabaseItem;
+import adlr.ltmit.bl.DbAdapter;
 import adlr.ltmit.controllers.DatabasesController;
+import adlr.ltmit.dao.CategoryDao;
+import adlr.ltmit.entities.Category;
+import adlr.ltmit.entities.Database;
 
 public class DatabaseListActivity extends ActionBarActivity {
     private DatabasesController dc;
     private String[] stringArray;
+
+
     private ListView listViewDatabases;
+
+    DatabaseItem[] dbItems;
+
     private String dbName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +38,28 @@ public class DatabaseListActivity extends ActionBarActivity {
         String database = intent.getStringExtra("CAT_NAME");
         listViewDatabases = (ListView) findViewById(R.id.listViewDatabases);
         dc = new DatabasesController();
+
         stringArray = dc.getAllDatabases(database);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, R.layout.row_layout, R.id.label,
-                stringArray);
+
+        dbItems = new DatabaseItem[stringArray.length];
+
+        Category cat = CategoryDao.getCategoryWithSomeName(database);
+        int i = 0;
+        for(Database d : cat.databases()){
+            DatabaseItem di = new DatabaseItem(d.getName(),R.drawable.icon1, Calculator.getDay(d.getDateToRepeat())+ " " + Calculator.getMonth(d.getDateToRepeat()));
+            dbItems[i] = di;
+            i++;
+        }
+
+        DbAdapter adapter = new DbAdapter(this,
+                R.layout.listview_item_row, dbItems);
+
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+//                this, R.layout.row_layout, R.id.label,
+//                stringArray);
         listViewDatabases.setAdapter(adapter);
+
+
         registerClick();
 
     }
@@ -64,7 +92,7 @@ public class DatabaseListActivity extends ActionBarActivity {
         listViewDatabases.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                dbName =parent.getItemAtPosition(position).toString();
+                dbName = dbItems[position].getName();
                 Intent intent = new Intent(DatabaseListActivity.this, DatabasesActivity.class);
                 intent.putExtra("DB_NAME", dbName);
                 startActivityForResult(intent, 1001);

@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import adlr.ltmit.R;
@@ -210,11 +211,12 @@ public class RepeatingActivity extends ActionBarActivity {
             }
 
             db.setDateToRepeat(Calculator.calculateDate(System.currentTimeMillis(), db.getPriority(), percentage));
-
+            db.save();
+            Date d = db.getDateToRepeat();
+            Log.d("DATE", Calculator.getDay(d) + " " + Calculator.getMonth(d) + " " + Calculator.getYear(d));
+            Log.d("PRIORITY", db.getPriority() + "");
             rc.deleteTemporaryDb();
         }
-
-
     }
 
     public void finishMe(View view){

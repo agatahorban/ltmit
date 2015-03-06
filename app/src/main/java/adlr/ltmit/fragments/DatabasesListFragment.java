@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import adlr.ltmit.R;
 import adlr.ltmit.activities.DatabaseListActivity;
+import adlr.ltmit.bl.DatabaseItem;
 import adlr.ltmit.controllers.CategoriesController;
 import adlr.ltmit.dao.CategoryDao;
 import adlr.ltmit.entities.Category;
@@ -43,6 +44,7 @@ public class DatabasesListFragment extends ListFragment
         cc = new CategoriesController();
 
         stringArray = cc.getAllCategories();
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 inflater.getContext(), R.layout.row_layout, R.id.label,
                 stringArray);
