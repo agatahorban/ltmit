@@ -54,10 +54,13 @@
             android:name=".activities.AddWordActivity"
             android:label="@string/title_activity_add_word" >
         </activity>
-
         <activity
             android:name=".activities.RepeatingActivity"
             android:label="@string/title_activity_add_word" >
+        </activity>
+        <activity
+            android:name=".activities.EditDatabaseActivity"
+            android:label="@string/title_activity_edit_database" >
         </activity>
     </application>
 

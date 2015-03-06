@@ -33,12 +33,18 @@
     <string name="see_statistics">SEE STATISTICS</string>
     <string name="exit">EXIT</string>
     <string name="title_activity_add_word">AddWord</string>
-
     <string name="word">Word</string>
     <string name="translation">Translation</string>
     <string name="add">ADD</string>
     <string name="finish">FINISH</string>
-
     <string name="percentage">Percentage: </string>
     <string name="wantLearn">Do you want to repeat problematic words?</string>
+    <string name="title_activity_edit_database">EditDatabaseActivity</string>
+
+    <string name="delete_database">DELETE DATABASE</string>
+    <string name="delete_question">Are you sure you want to delete this database? You will lose all data.</string>
+    <string name="yes">YES, PLEASE</string>
+    <string name="no">NO, THANKS</string>
+
+    <string name="cong">You remember everything. Congratulations!</string>
 </resources>

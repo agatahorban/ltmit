@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    tools:context="adlr.ltmit.activities.EditDatabaseActivity"
+    android:weightSum="1">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="430dp"
+        android:id="@+id/listView"
+        android:layout_weight="0.32" />
+
+    <Button
+        android:id="@+id/deleteDatabaseButton"
+        android:layout_marginTop="20dp"
+        android:textSize="14dp"
+        android:layout_width="185dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_layout"
+        android:text="@string/delete_database"
+        android:textColor="@color/buttonTextColor"
+        android:onClick="deleteDatabase"
+        android:layout_marginBottom="20dp"/>
+</LinearLayout>

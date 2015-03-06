@@ -18,6 +18,7 @@ public class DatabaseListActivity extends ActionBarActivity {
     private DatabasesController dc;
     private String[] stringArray;
     private ListView listViewDatabases;
+    private String dbName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,12 +64,21 @@ public class DatabaseListActivity extends ActionBarActivity {
         listViewDatabases.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String dbName =parent.getItemAtPosition(position).toString();
+                dbName =parent.getItemAtPosition(position).toString();
                 Intent intent = new Intent(DatabaseListActivity.this, DatabasesActivity.class);
                 intent.putExtra("DB_NAME", dbName);
-                startActivity(intent);
+                startActivityForResult(intent, 1001);
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 1001) {
+            finish();
+        }
+    }
+
 
 }

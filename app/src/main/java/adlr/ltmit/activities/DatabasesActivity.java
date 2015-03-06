@@ -3,6 +3,7 @@ package adlr.ltmit.activities;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -55,7 +56,25 @@ public class DatabasesActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    public void editDatabase(View view){
+        Intent intent = new Intent(DatabasesActivity.this, EditDatabaseActivity.class);
+        intent.putExtra("DB_NAME", dbName);
+        startActivityForResult(intent, 1000);
+
+    }
     public void exit(View view){
         this.finish();
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 1000) {
+            Intent previousScreen = new Intent(getApplicationContext(), DatabaseListActivity.class);
+            previousScreen.putExtra("DB_NAME", dbName);
+            setResult(1001, previousScreen);
+            finish();
+        }
+    }
+
 }
