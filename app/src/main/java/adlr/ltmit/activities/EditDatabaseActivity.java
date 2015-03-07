@@ -19,6 +19,8 @@ import adlr.ltmit.entities.Word;
 public class EditDatabaseActivity extends ActionBarActivity {
     private String dbName;
     private RepeatingController rc;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

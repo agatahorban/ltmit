@@ -50,9 +50,10 @@ public class DatabasesActivity extends ActionBarActivity {
     }
 
     public void editDatabase(View view){
-        Intent intent = new Intent(DatabasesActivity.this, EditDatabaseActivity.class);
+        Intent intent = new Intent(DatabasesActivity.this, EditDatabasesActivity.class);
         intent.putExtra("DB_NAME", dbName);
-        startActivityForResult(intent, 1000);
+        startActivity(intent);
+//        startActivityForResult(intent, 1000);
 
     }
     public void exit(View view){
@@ -69,5 +70,7 @@ public class DatabasesActivity extends ActionBarActivity {
             finish();
         }
     }
+
+
 
 }
