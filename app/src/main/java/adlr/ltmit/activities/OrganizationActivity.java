@@ -230,4 +230,5 @@ public class OrganizationActivity extends ActionBarActivity implements ActionBar
         }
         return orientation;
     }
+
 }

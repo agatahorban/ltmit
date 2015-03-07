@@ -35,6 +35,7 @@ public class DatabaseListActivity extends ActionBarActivity {
 
         dc = new DatabasesController();
 
+
         Category cat = CategoryDao.getCategoryWithSomeName(category);
         dbItems = dc.setDbItems(cat.databases());
 
@@ -43,6 +44,8 @@ public class DatabaseListActivity extends ActionBarActivity {
 
         listViewDatabases.setAdapter(adapter);
         listViewDatabases.setSelector(R.drawable.lselector);
+
+
         registerClick();
     }
 

@@ -50,10 +50,10 @@ public class DatabasesActivity extends ActionBarActivity {
     }
 
     public void editDatabase(View view){
-        Intent intent = new Intent(DatabasesActivity.this, EditDatabasesActivity.class);
+        Intent intent = new Intent(DatabasesActivity.this, EditDatabaseActivity.class);
         intent.putExtra("DB_NAME", dbName);
         startActivity(intent);
-//        startActivityForResult(intent, 1000);
+        startActivityForResult(intent, 1000);
 
     }
     public void exit(View view){

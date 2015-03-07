@@ -44,10 +44,12 @@
         </activity>
         <activity
             android:name=".activities.DatabaseListActivity"
+            android:noHistory="true"
             android:label="@string/title_activity_database_list" >
         </activity>
         <activity
             android:name=".activities.DatabasesActivity"
+            android:noHistory="true"
             android:label="@string/title_activity_databases" >
         </activity>
         <activity
@@ -60,13 +62,11 @@
         </activity>
         <activity
             android:name=".activities.EditDatabaseActivity"
+            android:noHistory="true"
             android:label="@string/title_activity_edit_database" >
         </activity>
 
-        <activity
-            android:name=".activities.EditDatabasesActivity"
-            android:label="@string/title_activity_edit_database" >
-        </activity>
+
     </application>
 
 </manifest>
