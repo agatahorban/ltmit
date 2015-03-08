@@ -37,7 +37,6 @@ public class DatabaseListActivity extends ActionBarActivity {
 
         dc = new DatabasesController();
 
-
         Category cat = CategoryDao.getCategoryWithSomeName(category);
         dbItems = dc.setDbItems(cat.databases());
 

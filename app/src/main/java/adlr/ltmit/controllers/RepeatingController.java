@@ -127,11 +127,11 @@ public class RepeatingController {
         return new ArrayList<>(Arrays.asList(sortedWords));
     }
 
-    public void savingTemporaryData(List<Word> words, String db){
-        deleteTemporaryDb();
+    public void savingTemporaryData(List<Word> words, String db, String tempDb){
+        deleteTemporaryDb(tempDb);
 
         Category cat = DatabaseDao.getDabatabaseWithSomeName(db).getCategory();
-        Database datb = new Database(1,cat,"temporary");
+        Database datb = new Database(1,cat,tempDb);
         datb.save();
         for(Word w : words){
             Word tempW = new Word();
@@ -145,13 +145,13 @@ public class RepeatingController {
         }
     }
 
-    public void deleteTemporaryDb(){
-        if(DatabaseDao.getDabatabaseWithSomeName("temporary")!=null) {
-            if (!DatabaseDao.getDabatabaseWithSomeName("temporary").words().isEmpty()) {
-                for (Word w : DatabaseDao.getDabatabaseWithSomeName("temporary").words())
+    public void deleteTemporaryDb(String tempDb){
+        if(DatabaseDao.getDabatabaseWithSomeName(tempDb)!=null) {
+            if (!DatabaseDao.getDabatabaseWithSomeName(tempDb).words().isEmpty()) {
+                for (Word w : DatabaseDao.getDabatabaseWithSomeName(tempDb).words())
                     w.delete();
             }
-            DatabaseDao.getDabatabaseWithSomeName("temporary").delete();
+            DatabaseDao.getDabatabaseWithSomeName(tempDb).delete();
         }
     }
 

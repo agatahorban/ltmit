@@ -2,6 +2,8 @@ package adlr.ltmit.controllers;
 
 import android.util.Log;
 
+import com.activeandroid.ActiveAndroid;
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -20,6 +22,7 @@ import adlr.ltmit.entities.Word;
 
 public class DatabasesController {
     DatabaseDao dd;
+    private static final String temporary = "tem432543porary";
 
     public DatabasesController(){
         dd = new DatabaseDao();
@@ -54,7 +57,22 @@ public class DatabasesController {
         DatabaseItem[] dbItems = new DatabaseItem[dbs.size()];
         String date;
         int i = 0;
+
         for(Database d : dbs){
+            if (d.getName().equals(temporary)) {
+                ActiveAndroid.beginTransaction();
+                try {
+                    for (Word w : d.words()) {
+                        w.delete();
+                    }
+
+                    ActiveAndroid.setTransactionSuccessful();
+                } finally {
+                    ActiveAndroid.endTransaction();
+                }
+
+                d.delete();
+            }
             if(Calculator.isMoreThan14Days(d.getDateToRepeat())) {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
                 date = sdf.format(d.getDateToRepeat());

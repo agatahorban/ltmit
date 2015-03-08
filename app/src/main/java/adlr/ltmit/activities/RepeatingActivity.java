@@ -57,12 +57,12 @@ public class RepeatingActivity extends ActionBarActivity {
 
         if (savedInstanceState == null) {
             words = rc.changingOrder(rc.findProperDatabaseWords(dbName));
-            rc.savingTemporaryData(words, dbName);
-            words = rc.findProperDatabaseWords("temporary");
+            rc.savingTemporaryData(words, dbName, getResources().getString(R.string.temporary_db_name));
+            words = rc.findProperDatabaseWords(getResources().getString(R.string.temporary_db_name));
         }
         if (savedInstanceState != null) {
             counter = savedInstanceState.getInt("COUNTER", counter);
-            words = rc.findProperDatabaseWords("temporary");
+            words = rc.findProperDatabaseWords(getResources().getString(R.string.temporary_db_name));
             isFirstTime = savedInstanceState.getBoolean("FIRST", true);
         }
         seenWord = words.get(counter);
@@ -182,7 +182,7 @@ public class RepeatingActivity extends ActionBarActivity {
 
             rc.zeroAllWords(db.words());
             rc.setNewDate(db,percentage);
-            rc.deleteTemporaryDb();
+            rc.deleteTemporaryDb(getResources().getString(R.string.temporary_db_name));
         }
     }
 
