@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import adlr.ltmit.R;
 import adlr.ltmit.controllers.DatabasesController;
@@ -47,9 +48,23 @@ public class AddWordActivity extends ActionBarActivity {
 
     public void addWord(View view){
         dc.addWord(wordET.getText().toString(), translationET.getText().toString(),databaseName);
+        Toast toast = Toast.makeText(this, getResources().getString(R.string.add_word_success), Toast.LENGTH_SHORT);
+        toast.show();
+        wordET.setText("");
+        translationET.setText("");
     }
 
     public void finishMe(View view){
         this.finish();
+        Intent intent = new Intent(AddWordActivity.this, DatabasesActivity.class);
+        intent.putExtra("DB_NAME", databaseName);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(AddWordActivity.this, DatabasesActivity.class);
+        intent.putExtra("DB_NAME", databaseName);
+        startActivity(intent);
     }
 }

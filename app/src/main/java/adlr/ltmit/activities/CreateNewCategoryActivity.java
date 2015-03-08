@@ -1,5 +1,6 @@
 package adlr.ltmit.activities;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -45,4 +46,6 @@ public class CreateNewCategoryActivity extends ActionBarActivity {
     public void cancelMe(View view){
         this.finish();
     }
+
+
 }

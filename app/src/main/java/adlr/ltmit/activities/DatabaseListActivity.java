@@ -3,6 +3,7 @@ package adlr.ltmit.activities;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,7 @@ public class DatabaseListActivity extends ActionBarActivity {
     private ListView listViewDatabases;
     DatabaseItem[] dbItems;
     private String dbName;
+    private String category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class DatabaseListActivity extends ActionBarActivity {
         setContentView(R.layout.activity_database_list);
 
         Intent intent = getIntent();
-        String category = intent.getStringExtra("CAT_NAME");
+        category = intent.getStringExtra("CAT_NAME");
 
         listViewDatabases = (ListView) findViewById(R.id.listViewDatabases);
 
@@ -44,6 +46,7 @@ public class DatabaseListActivity extends ActionBarActivity {
 
         listViewDatabases.setAdapter(adapter);
         listViewDatabases.setSelector(R.drawable.lselector);
+
 
 
         registerClick();
@@ -73,16 +76,17 @@ public class DatabaseListActivity extends ActionBarActivity {
                 dbName = dbItems[position].getName();
                 Intent intent = new Intent(DatabaseListActivity.this, DatabasesActivity.class);
                 intent.putExtra("DB_NAME", dbName);
-                startActivityForResult(intent, 1001);
+                intent.putExtra("CAT_NAME", category);
+                startActivity(intent);
             }
         });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 1001) {
-            finish();
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == 1001) {
+//            finish();
+//        }
+//    }
 }

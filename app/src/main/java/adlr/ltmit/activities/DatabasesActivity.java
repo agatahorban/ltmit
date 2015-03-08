@@ -11,6 +11,7 @@ import adlr.ltmit.R;
 
 public class DatabasesActivity extends ActionBarActivity {
     private String dbName;
+    private String category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,7 @@ public class DatabasesActivity extends ActionBarActivity {
         setContentView(R.layout.activity_databases);
         Intent intent = getIntent();
         dbName = intent.getStringExtra("DB_NAME");
+        category = intent.getStringExtra("CAT_NAME");
     }
 
 
@@ -40,37 +42,33 @@ public class DatabasesActivity extends ActionBarActivity {
     public void addWords(View view){
         Intent intent = new Intent(DatabasesActivity.this, AddWordActivity.class);
         intent.putExtra("DB_NAME", dbName);
+        intent.putExtra("CAT_NAME", category);
         startActivity(intent);
     }
 
     public void startRepeating(View view){
         Intent intent = new Intent(DatabasesActivity.this, RepeatingActivity.class);
         intent.putExtra("DB_NAME", dbName);
+        intent.putExtra("CAT_NAME", category);
         startActivity(intent);
     }
 
     public void editDatabase(View view){
         Intent intent = new Intent(DatabasesActivity.this, EditDatabaseActivity.class);
         intent.putExtra("DB_NAME", dbName);
+        intent.putExtra("CAT_NAME", category);
         startActivity(intent);
-        startActivityForResult(intent, 1000);
 
     }
     public void exit(View view){
         this.finish();
     }
 
+
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 1000) {
-            Intent previousScreen = new Intent(getApplicationContext(), DatabaseListActivity.class);
-            previousScreen.putExtra("DB_NAME", dbName);
-            setResult(1001, previousScreen);
-            finish();
-        }
+    public void onBackPressed() {
+        Intent intent = new Intent(DatabasesActivity.this, DatabaseListActivity.class);
+        intent.putExtra("CAT_NAME", category);
+        startActivity(intent);
     }
-
-
-
 }

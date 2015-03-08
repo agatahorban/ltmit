@@ -51,4 +51,12 @@
     <string name="databases">DATABASES</string>
     <string name="your_profile">YOUR PROFILE</string>
     <string name="create_new">CREATE NEW...</string>
+
+    <string name="change_meaning">New meaning: </string>
+
+    <string name="change_translation">New translation: </string>
+
+    <string name="add_word_success">Word successfully added.</string>
+
+    <string name="temporary_db_name">tem432543porary</string>
 </resources>

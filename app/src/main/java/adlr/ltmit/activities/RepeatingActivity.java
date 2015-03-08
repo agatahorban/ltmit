@@ -28,6 +28,7 @@ import adlr.ltmit.entities.Word;
 
 public class RepeatingActivity extends ActionBarActivity {
     private String dbName;
+    private String category;
     private RepeatingController rc;
     private List<Word> words;
     private int counter = 0;
@@ -44,6 +45,7 @@ public class RepeatingActivity extends ActionBarActivity {
         setContentView(R.layout.activity_repeating);
         Intent intent = getIntent();
         dbName = intent.getStringExtra("DB_NAME");
+        category = intent.getStringExtra("CAT_NAME");
         rc = new RepeatingController();
         db = rc.findProperDatabase(dbName);
 
@@ -178,7 +180,6 @@ public class RepeatingActivity extends ActionBarActivity {
                 thread.start();
             }
 
-
             rc.zeroAllWords(db.words());
             rc.setNewDate(db,percentage);
             rc.deleteTemporaryDb();
@@ -187,5 +188,17 @@ public class RepeatingActivity extends ActionBarActivity {
 
     public void finishMe(View view){
         this.finish();
+        Intent intent = new Intent(RepeatingActivity.this, DatabasesActivity.class);
+        intent.putExtra("DB_NAME", dbName);
+        intent.putExtra("CAT_NAME", category);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(RepeatingActivity.this, DatabasesActivity.class);
+        intent.putExtra("DB_NAME", dbName);
+        intent.putExtra("CAT_NAME", category);
+        startActivity(intent);
     }
 }

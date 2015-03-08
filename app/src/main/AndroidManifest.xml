@@ -58,6 +58,7 @@
         </activity>
         <activity
             android:name=".activities.RepeatingActivity"
+            android:noHistory="true"
             android:label="@string/title_activity_add_word" >
         </activity>
         <activity
