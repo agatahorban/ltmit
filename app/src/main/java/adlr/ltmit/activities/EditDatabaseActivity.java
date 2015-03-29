@@ -92,19 +92,6 @@ public class EditDatabaseActivity extends ActionBarActivity {
         builder.setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if(!(db.words().isEmpty())){
-                    ActiveAndroid.beginTransaction();
-                    try {
-                    for(Word w : db.words())
-                    { w.delete(); }
-
-                    ActiveAndroid.setTransactionSuccessful();
-                    }finally{
-                        ActiveAndroid.endTransaction();
-                    }
-                }
-                db.delete();
-
                 Intent intent = new Intent(EditDatabaseActivity.this, DatabaseListActivity.class);
                 intent.putExtra("DB_NAME", dbName);
                 intent.putExtra("CAT_NAME", category);
@@ -295,6 +282,7 @@ public class EditDatabaseActivity extends ActionBarActivity {
         if(rc.findProperDatabase(dbName)!=null) {
             intent = new Intent(EditDatabaseActivity.this, DatabasesActivity.class);
             intent.putExtra("DB_NAME", dbName);
+            intent.putExtra("CAT_NAME", category);
         }
         else {
             intent = new Intent(EditDatabaseActivity.this, DatabaseListActivity.class);

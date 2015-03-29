@@ -3,6 +3,7 @@ package adlr.ltmit.activities;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +16,7 @@ import adlr.ltmit.controllers.DatabasesController;
 public class AddWordActivity extends ActionBarActivity {
 
     private DatabasesController dc;
-    private String databaseName;
+    private String databaseName, categoryName;
     private EditText wordET, translationET;
 
 
@@ -26,6 +27,8 @@ public class AddWordActivity extends ActionBarActivity {
         dc = new DatabasesController();
         Intent intent = getIntent();
         databaseName = intent.getStringExtra("DB_NAME");
+        categoryName = intent.getStringExtra("CAT_NAME");
+        Log.d(categoryName,categoryName);
         wordET = (EditText) findViewById(R.id.wordET);
         translationET = (EditText) findViewById(R.id.translationET);
     }
@@ -54,17 +57,21 @@ public class AddWordActivity extends ActionBarActivity {
         translationET.setText("");
     }
 
+
     public void finishMe(View view){
-        this.finish();
-        Intent intent = new Intent(AddWordActivity.this, DatabasesActivity.class);
-        intent.putExtra("DB_NAME", databaseName);
-        startActivity(intent);
+        finishThisActivity();
     }
 
     @Override
     public void onBackPressed() {
+        finishThisActivity();
+    }
+
+    private void finishThisActivity(){
         Intent intent = new Intent(AddWordActivity.this, DatabasesActivity.class);
         intent.putExtra("DB_NAME", databaseName);
+        intent.putExtra("CAT_NAME", categoryName);
         startActivity(intent);
     }
 }
+

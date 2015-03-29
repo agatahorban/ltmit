@@ -32,7 +32,6 @@ public class DatabaseListActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
         category = intent.getStringExtra("CAT_NAME");
-
         listViewDatabases = (ListView) findViewById(R.id.listViewDatabases);
 
         dc = new DatabasesController();
@@ -45,8 +44,6 @@ public class DatabaseListActivity extends ActionBarActivity {
 
         listViewDatabases.setAdapter(adapter);
         listViewDatabases.setSelector(R.drawable.lselector);
-
-
 
         registerClick();
     }
@@ -81,11 +78,4 @@ public class DatabaseListActivity extends ActionBarActivity {
         });
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (resultCode == 1001) {
-//            finish();
-//        }
-//    }
 }

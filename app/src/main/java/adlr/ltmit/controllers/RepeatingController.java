@@ -51,7 +51,7 @@ public class RepeatingController {
         int earlierAmount = database.getAmount();
         double earlierPercentage = database.getGeneralStatistics();
         int amount = earlierAmount+1;
-        double newPercentage = (earlierAmount * earlierPercentage + percentage) / amount;
+        double newPercentage = ((double) earlierAmount * earlierPercentage + percentage) / amount;
         database.setAmount(amount);
         database.setGeneralStatistics(newPercentage);
         database.save();

@@ -23,7 +23,7 @@
             android:value="ltm.db" />
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="11" />
+            android:value="12" />
 
         <activity
             android:name=".activities.OrganizationActivity"
@@ -44,30 +44,34 @@
         </activity>
         <activity
             android:name=".activities.DatabaseListActivity"
-            android:noHistory="true"
-            android:label="@string/title_activity_database_list" >
+            android:label="@string/title_activity_database_list"
+            android:noHistory="true" >
         </activity>
         <activity
             android:name=".activities.DatabasesActivity"
-            android:noHistory="true"
-            android:label="@string/title_activity_databases" >
+            android:label="@string/title_activity_databases"
+            android:noHistory="true" >
         </activity>
         <activity
             android:name=".activities.AddWordActivity"
-            android:label="@string/title_activity_add_word" >
+            android:label="@string/title_activity_add_word"
+            android:noHistory="true">
         </activity>
         <activity
             android:name=".activities.RepeatingActivity"
-            android:noHistory="true"
-            android:label="@string/title_activity_add_word" >
+            android:label="@string/title_activity_add_word"
+            android:noHistory="true" >
         </activity>
         <activity
             android:name=".activities.EditDatabaseActivity"
-            android:noHistory="true"
-            android:label="@string/title_activity_edit_database" >
+            android:label="@string/title_activity_edit_database"
+            android:noHistory="true" >
         </activity>
-
-
+        <activity
+            android:name=".activities.DatabaseStatisticsActivity"
+            android:label="@string/title_activity_database_statistics"
+            android:noHistory="true">
+        </activity>
     </application>
 
 </manifest>

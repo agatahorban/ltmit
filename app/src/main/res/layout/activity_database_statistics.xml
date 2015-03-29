@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    tools:context="adlr.ltmit.activities.DatabaseStatisticsActivity">
+
+    <TextView
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22dp"
+        android:textColor="@color/helloColor"
+        android:text="Large Text"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:id="@+id/dbStatNameTextView"
+        android:shadowColor="#000000"
+        android:shadowDx="-1"
+        android:shadowDy="1"
+        android:shadowRadius="0.01"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/general_percentage"
+        android:id="@+id/memorizationPercentageTv1"
+        android:paddingLeft="10dp"
+        android:textSize="20sp"
+        android:layout_weight="0.5"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New text"
+            android:id="@+id/memorizationPercentageTv2"
+            android:paddingLeft="20dp"
+            android:textSize="20sp"
+            android:layout_weight="0.5"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/memorizationPercentageTv1"
+            android:layout_toEndOf="@+id/memorizationPercentageTv1" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/amount_of_repetitions"
+            android:id="@+id/amountTv1"
+            android:paddingLeft="10dp"
+            android:textSize="20sp"
+            android:layout_weight="0.5"
+            android:layout_below="@+id/memorizationPercentageTv1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:paddingTop="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New text"
+            android:id="@+id/amountTv2"
+            android:paddingLeft="20dp"
+            android:textSize="20sp"
+            android:layout_weight="0.5"
+            android:layout_alignTop="@+id/amountTv1"
+            android:layout_toRightOf="@+id/memorizationPercentageTv1"
+            android:layout_toEndOf="@+id/memorizationPercentageTv1"
+            android:paddingTop="10dp"/>
+
+</RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/chart"
+        android:orientation="vertical"/>
+
+
+</LinearLayout>

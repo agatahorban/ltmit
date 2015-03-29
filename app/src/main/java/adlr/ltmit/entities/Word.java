@@ -25,7 +25,7 @@ public class Word extends Model{
     @Column(name="IS_CRITICAL")
     private int isCritical;
 
-    @Column(name = "DATABS", notNull = true)
+    @Column(name = "DATABS", notNull = true, onDelete = Column.ForeignKeyAction.CASCADE)
     private Database database;
 
     @Column(name = "AMOUNT_OF_REPETITIONS")

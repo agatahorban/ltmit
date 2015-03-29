@@ -3,6 +3,7 @@ package adlr.ltmit.activities;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -55,16 +56,24 @@ public class DatabasesActivity extends ActionBarActivity {
 
     public void editDatabase(View view){
         Intent intent = new Intent(DatabasesActivity.this, EditDatabaseActivity.class);
-        intent.putExtra("DB_NAME", dbName);
-        intent.putExtra("CAT_NAME", category);
-        startActivity(intent);
-
+        startAnotherActivity(intent);
     }
+
+    public void seeStatistics(View view){
+        Intent intent = new Intent(DatabasesActivity.this, DatabaseStatisticsActivity.class);
+        startAnotherActivity(intent);
+    }
+
     public void exit(View view){
         this.finish();
     }
 
 
+    private void startAnotherActivity(Intent intent){
+        intent.putExtra("DB_NAME", dbName);
+        intent.putExtra("CAT_NAME", category);
+        startActivity(intent);
+    }
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(DatabasesActivity.this, DatabaseListActivity.class);
